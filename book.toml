@@ -1,0 +1,16 @@
+[book]
+authors = ["Benjamin Cretois"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Documentation on using HPC and containers for Machine Learning"
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
