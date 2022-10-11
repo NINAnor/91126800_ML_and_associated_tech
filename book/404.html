@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_0_introduction.html"><strong aria-hidden="true">1.</strong> Chapter 1: Introduction</a></li><li class="chapter-item expanded "><a href="content/chapter_1_hpc.html"><strong aria-hidden="true">2.</strong> Chapter 2: High Performance Clusters</a></li><li class="chapter-item expanded "><a href="content/chapter_2_Containers.html"><strong aria-hidden="true">3.</strong> Chapter 3: Containers</a></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">4.</strong> Chapter 4: Pyfilesystem</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">5.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Aknowledgments</div></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 2: High Performance Computer Clusters (HPCC)</a></li><li class="chapter-item expanded "><a href="content/chapter_2_Containers.html"><strong aria-hidden="true">2.</strong> Chapter 3: Containers</a></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,6 +163,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
@@ -180,6 +196,8 @@
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="mermaid.min.js"></script>
+        <script type="text/javascript" src="mermaid-init.js"></script>
 
 
     </body>

@@ -4,12 +4,11 @@
 
 # Core book
 
-- [Chapter 1: Introduction](content/chapter_0_introduction.md)
-- [Chapter 2: High Performance Clusters](content/chapter_1_hpc.md)
+- [Chapter 2: High Performance Computer Clusters (HPCC)](content/chapter_1_hpc.md)
 - [Chapter 3: Containers](content/chapter_2_Containers.md)
-- [Chapter 4: Pyfilesystem](content/chapter_3_FileSystem.md)
+- [Chapter 4: Data management](content/chapter_3_FileSystem.md)
 - [Chapter 5: Case studies](content/chapter_4_Templates.md)
-- [Aknowledgments]()
+- [Aknowledgments](content/acknowledgments.md)
 
 # Vocabulary
 
