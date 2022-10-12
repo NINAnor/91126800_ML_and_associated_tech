@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 2: High Performance Computer Clusters (HPCC)</a></li><li class="chapter-item expanded "><a href="content/chapter_2_Containers.html"><strong aria-hidden="true">2.</strong> Chapter 3: Containers</a></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2_Containers.html"><strong aria-hidden="true">2.</strong> Chapter 3: Containers</a></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -146,97 +146,91 @@
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>This document is a guide to get started with High Performance Computer clusters (HPCC) and more particularly <a href="https://www.sigma2.no/high-performance-computing">Uninett Sigma2's HPCC</a>. This guide aims at understanding the basic commands for navigating in the terminal of an HPCC, at helping running a <strong>job script</strong> and at managing files such as copying files from your local directory to the HPCC and using files that are stored remotely.</p>
 <p>This document is the result of a Strategic Funding given by the <a href="https://www.nina.no/english/home">Norwegian Institute for Nature Research</a> (NINA). Please note that the document is <strong>not static</strong> and constantly subject to improvement based on feedbacks. You can contribute to improving the document by opening issues on the <a href="https://github.com/NINAnor/91126800_ML_and_associated_tech">GitHub repository</a> of this project.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="high-performance-clusters-hpc"><a class="header" href="#high-performance-clusters-hpc">High Performance Clusters (HPC)</a></h1>
-<h2 id="1-description-of-sigma2-and-how-to-apply-for-an-account"><a class="header" href="#1-description-of-sigma2-and-how-to-apply-for-an-account">1. Description of SIGMA2 and how to apply for an account</a></h2>
-<h3 id="11-what-is-sigma2"><a class="header" href="#11-what-is-sigma2">1.1. What is SIGMA2?</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-hpc-and-why-using-it"><a class="header" href="#what-is-hpc-and-why-using-it">What is HPC and why using it?</a></h1>
+<p><strong>High performance computing</strong> (HPC) generally refers to processing complex calculations at high speeds across multiple servers in parallel. Those groups of servers are known as clusters and are composed of <strong>hundreds or even thousands of compute servers</strong> that have been connected through a network. </p>
+<p>With the increased use of technologies like the Internet of Things (IoT), artificial intelligence (AI), and machine learning (ML), organizations are producing huge quantities of data, and they need to be able to process and use that data more quickly in real-time. To power the analysis of such large dataset it is often more practical / mandatory to make use of supercomputing. Supercomputing enables fast processing of data and training of complex algorithms such as neural networks for image and sound recognition.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-uninett-sigma2"><a class="header" href="#what-is-uninett-sigma2">What is Uninett Sigma2?</a></h1>
 <p>Sigma2 is a <strong>non-profit</strong> company that provides services for high-performance computing and data storage to individuals and groups involved in research and education at all Norwegian universities and colleges, and other publicly funded organizations and projects (such as NINA). Their activities are financed by the <strong>Research Council of Norway (RCN)</strong> and the <strong>Sigma2 consortium partners</strong>, which are the universities in Oslo, Bergen, Trondheim and Tromsø. This collaboration goes by the name <strong>NRIS – Norwegian research infrastructure services</strong>. </p>
-<p>Sigma2 owns four High Performance Computing (HPC) servers that have different capabilities: <code>Betsy</code>, <code>Saga</code>, <code>Fram</code> and <code>LUMI</code>. Generally, at NINA we do not conduct extremely intensive computational tasks (compared to an AI lab for instance) and if we want access to one or multiple GPUs it is reasonable to apply for an access to <code>Saga</code>.</p>
+<p>Sigma2 owns <strong>four High Performance Computing (HPC) servers</strong> that have different configurations: <code>Betsy</code>, <code>Saga</code>, <code>Fram</code> and <code>LUMI</code>. Generally, if a project requires access to one or more <strong>Graphics processing units</strong> (GPUs) it is reasonable to apply for an access to <code>Saga</code>.</p>
 <p>To apply for access to one of Sigma2 HPC please refer to <a href="https://www.sigma2.no/apply-e-infrastructure-resources">this page</a>. You will need to fill out a form describing your project, your experience with HPC and your computational needs (amount of CPU / GPU memory and storage your project will need).</p>
-<p>For some help regarding the application process contact <a href="mailto:benjamin.cretois@nina.no">Benjamin Cretois</a>, <a href="mailto:kjetil.grun@nina.no">Kjetil Grun</a> or <a href="mailto:francesco.frassinelli@nina.no">Francesco Frassinelli</a>.</p>
-<h3 id="12-the-role-of-sigma2-in-the-ml-workflow"><a class="header" href="#12-the-role-of-sigma2-in-the-ml-workflow">1.2. The role of Sigma2 in the ML workflow</a></h3>
-<p>While most of the scripting for building efficient machine learning pipeline and algorithms is be done locally (on your own NINA laptop or on the Linux Virtual Desktop made available by Datahjelp, VDI), Sigma2 supercomputers can help being more efficient at training / using the machine learning models.</p>
-<p>Machine learning algorithms and particularly deep learning algorithms are much faster trained wth Graphical Processing Units (GPUs) as GPUs are very efficient at parallelizing processes. Sigma2's computers have multiple GPUs available that we can &quot;borrow&quot; for our computation tasks - this is specified in a <strong>job</strong> script as we will see later. Sigma2 makes it possible to train multiple ML models at the same time for instance, making it possible to fine tune specific parameters and variables relatively quickly.</p>
-<p>Sigma2 should thus be used when our scripts related to machine learning already work on the VDI (or on your local computer) and you would like to fine-tune your model's parameters or ultimately to train your machine learning model on the entire dataset you have.</p>
-<h3 id="13-getting-started-with-sigma2"><a class="header" href="#13-getting-started-with-sigma2">1.3. Getting started with Sigma2</a></h3>
-<p>After a successful application to an account on Sigma2 you will be able to access the HPC facility you applied for (in our case it is <code>saga</code>). You can log in using the command <code>ssh</code> in Windows PowerShell or on a linux terminal: </p>
+<p>For help regarding the application process contact <a href="mailto:benjamin.cretois@nina.no">Benjamin Cretois</a>, <a href="mailto:kjetil.grun@nina.no">Kjetil Grun</a> or <a href="mailto:francesco.frassinelli@nina.no">Francesco Frassinelli</a>.</p>
+<h1 id="getting-started-with-sigma2"><a class="header" href="#getting-started-with-sigma2">Getting started with Sigma2</a></h1>
+<p>After a successful application to an account on Sigma2 you will be given your <strong>username</strong> and will be able to log on the HPC terminal.</p>
+<p>To access the HPC server you applied for (in our case it is <code>saga</code>). You can log in using the command <code>ssh</code> in <strong>Windows PowerShell</strong> or on a <strong>linux terminal</strong>: </p>
 <pre><code class="language-bash">$ ssh username@saga.sigma2.no
 </code></pre>
-<p>Note that if you have access to another HPC facility, you have to replace <code>saga</code> in the command describe above.</p>
-<h2 id="2-basic-commands-on-sigma2"><a class="header" href="#2-basic-commands-on-sigma2">2. Basic commands on Sigma2</a></h2>
-<h3 id="21-beginner-bash"><a class="header" href="#21-beginner-bash">2.1 Beginner bash</a></h3>
-<p>Once you are logged in the HPC you should only see a dry, unwelcoming interface named a <code>shell</code>. Navigating on a computer through a shell can be quite combersome as it works through commands only, there is no real visual apart from the displayed text!</p>
-<pre><code># Here is how the shell looks like
-[bencretois@login-5.SAGA ~]$ 
+<p>The first time you log in, you will be asked to set your <strong>password</strong> which will have to be used at any subsequent connection to the HPC server.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="2-navigating-in-sigma2s-hpc-server"><a class="header" href="#2-navigating-in-sigma2s-hpc-server">2. Navigating in Sigma2's HPC server</a></h2>
+<h3 id="21-bash-crash-course"><a class="header" href="#21-bash-crash-course">2.1 bash crash course</a></h3>
+<p>Communication between you and the HPC server is usually done through an interface named a <code>bash</code> and no <strong>Graphical User Interface (GUI)</strong> is provided</p>
+<p>Here is how the bash looks like</p>
+<pre><code>[bencretois@login-5.SAGA ~]$ 
 </code></pre>
-<p>To navigate in the HPC you will need to learn some <code>shell scripting</code>. Here is a quick list of command that will allow you to navigate in a Sigma2 supercomputer:</p>
+<p>Communicating with a bash requires learning a particular programming language, <strong>bash scripting</strong>. Below we provide a list of selected commands that will allow you to navigate in HPC server:</p>
+<h4 id="change-directory"><a class="header" href="#change-directory">Change directory</a></h4>
+<p><strong>Command:</strong></p>
 <ul>
-<li><code>cd + path to the directory</code> -&gt; change director</li>
+<li><code>cd + path to the directory</code> </li>
 </ul>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ cd deepexperiments/
 [bencretois@login-5.SAGA ~/deepexperiments]$
 </code></pre>
+<h4 id="get-to-the-previous-directory"><a class="header" href="#get-to-the-previous-directory">Get to the previous directory</a></h4>
+<p><strong>Command:</strong></p>
 <ul>
-<li><code>ls</code> list the folder (i.e. the directory) in which you are</li>
+<li><code>cd ..</code> -&gt; get to the previous directory</li>
 </ul>
+<p><strong>Output:</strong></p>
+<pre><code>[bencretois@login-5.SAGA ~/deepexperiments]$ cd ..
+[bencretois@login-5.SAGA ~]$
+</code></pre>
+<h4 id="list-the-content-of-a-directory"><a class="header" href="#list-the-content-of-a-directory">List the content of a directory</a></h4>
+<p><strong>Command:</strong></p>
+<ul>
+<li><code>ls</code> + name of a directory - Note that <code>ls</code> by default list the files of your current directory </li>
+</ul>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~/deepexperiments]$ ls
+
 bash_cheatsheet.md   Dockerfile             list_ignore.txt  poetry.lock     runs            sync.sh
 bayesianfy.ipynb     docker_run_jupyter.sh  models           pyproject.toml  scripts         utils
 deepexperiments.sif  jobs
 </code></pre>
+<h4 id="get-the-path-of-your-current-directory"><a class="header" href="#get-the-path-of-your-current-directory">get the path of your current directory</a></h4>
+<p><strong>Command:</strong></p>
 <ul>
-<li><code>cd ..</code> -&gt; get to the previous directory</li>
+<li><code>pwd</code> </li>
 </ul>
-<pre><code>[bencretois@login-5.SAGA ~/deepexperiments]$ cd ..
-[bencretois@login-5.SAGA ~]$
-</code></pre>
-<ul>
-<li><code>pwd</code> -&gt; get the path of the current directory</li>
-</ul>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ pwd
 /cluster/home/bencretois
 </code></pre>
+<h4 id="create-a-new-folder"><a class="header" href="#create-a-new-folder">Create a new folder</a></h4>
+<p><strong>Command:</strong></p>
 <ul>
-<li><code>mkdir name_folder</code> -&gt; create a folder named <code>name_folder</code></li>
+<li><code>mkdir</code> + name of the folder you want to create</li>
 </ul>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ mkdir new_folder
 [bencretois@login-5.SAGA ~]$ ls
 deepexperiments new_folder
 </code></pre>
-<h3 id="22-bash-commands-specific-to-sigma2"><a class="header" href="#22-bash-commands-specific-to-sigma2">2.2. Bash commands specific to Sigma2</a></h3>
+<h4 id="learning-more-bash-commands"><a class="header" href="#learning-more-bash-commands">Learning more bash commands</a></h4>
+<p><em>Bash command</em>* are very well documented on Internet and if you wish to learn more you can begin <a href="https://www.educative.io/blog/bash-shell-command-cheat-sheet">here</a>.</p>
+<h3 id="22-bash-commands-specific-to-sigma2s-hpc"><a class="header" href="#22-bash-commands-specific-to-sigma2s-hpc">2.2. Bash commands specific to Sigma2's HPC</a></h3>
 <p>There are also some useful commands specific to your Sigma2 account:</p>
+<h4 id="list-your-projects"><a class="header" href="#list-your-projects">List your projects</a></h4>
+<p><strong>Command:</strong></p>
 <p><code>projects</code> -&gt; list your projects</p>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ projects
 nn5019k
 </code></pre>
-<p><code>dusage</code> -&gt; look at the space used in your project folders. Note that <strong>space used</strong> is what you are currently using and <strong>quota</strong> is the limit. </p>
-<pre><code>[bencretois@login-5.SAGA ~]$ dusage
-
-dusage v0.1.4
-                          path    backup    space used     quota    files      quota
-------------------------------  --------  ------------  --------  -------  ---------
-                      /cluster        no       5.6 GiB         -   38 819          -
-      /cluster/home/bencretois       yes       4.6 GiB  20.0 GiB    1 311    100 000
-/cluster/work/users/bencretois        no       0.0 KiB         -        0          -
-     /cluster/projects/nn5019k       yes     938.2 MiB   1.0 TiB   37 508  1 000 000
-
-</code></pre>
-<h3 id="3-running-scripts-on-sigma2"><a class="header" href="#3-running-scripts-on-sigma2">3 Running scripts on Sigma2</a></h3>
-<h3 id="31-anatomy-of-a-job-script"><a class="header" href="#31-anatomy-of-a-job-script">3.1. Anatomy of a job script</a></h3>
-<p>To run a job on a SIGMA2 server we need to create a shell script called a job script. The job script is a plain-text file containing any number of commands, including your main computational task</p>
-<h3 id="32-description-of-job-scripts"><a class="header" href="#32-description-of-job-scripts">3.2. Description of job scripts</a></h3>
-<h2 id="using-docker-on-sigma2"><a class="header" href="#using-docker-on-sigma2">Using docker on SIGMA2</a></h2>
-<ol>
-<li>Introduction to docker</li>
-<li>Build your custom docker image</li>
-<li>Introduction to singularity</li>
-<li>Run your script in a docker container</li>
-</ol>
-<h2 id="machine-learning-workflow"><a class="header" href="#machine-learning-workflow">Machine learning workflow</a></h2>
-<ol>
-<li>Structuring the ML project</li>
-</ol>
-<p>First of all, we need to differentiate the <strong>development space</strong> &amp; the <strong>data space</strong>. Usually, HPCs allocate a large amount of disk storage capacity in a specific place (i.e. <code>/cluster/projects/</code> for SAGA) and a smaller amount of disk storage capacity to store the scripts used to run an analysis (i.e. <code>/cluster/home/</code>)</p>
-<p>For instance, for this specific project (nn5019k) we have 20GB of space in <code>/cluster/home/bencretois</code> and 1TB in <code>/cluster/projects/nn5019k</code> as displayed with the command <code>dusage</code> below:</p>
+<h4 id="look-at-used-space-and-allocated-quota-for-your-projects"><a class="header" href="#look-at-used-space-and-allocated-quota-for-your-projects">Look at used space and allocated quota for your projects</a></h4>
+<p><strong>Command:</strong></p>
+<p><code>dusage</code> -&gt; . Note that <strong>space used</strong> is what you are currently using and <strong>quota</strong> is the limit. </p>
+<p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ dusage
 
 dusage v0.1.4
@@ -300,6 +294,34 @@ folder2
     return files
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<h2 id="3-running-scripts-on-sigma2"><a class="header" href="#3-running-scripts-on-sigma2">3. Running scripts on Sigma2</a></h2>
+<h3 id="31-anatomy-of-a-job-script"><a class="header" href="#31-anatomy-of-a-job-script">3.1. Anatomy of a job script</a></h3>
+<p>To run a job on a SIGMA2 server we need to create a shell script called a job script. The job script is a plain-text file containing any number of commands, including your main computational task</p>
+<h3 id="32-description-of-job-scripts"><a class="header" href="#32-description-of-job-scripts">3.2. Description of job scripts</a></h3>
+<h2 id="using-docker-on-sigma2"><a class="header" href="#using-docker-on-sigma2">Using docker on SIGMA2</a></h2>
+<ol>
+<li>Introduction to docker</li>
+<li>Build your custom docker image</li>
+<li>Introduction to singularity</li>
+<li>Run your script in a docker container</li>
+</ol>
+<h2 id="machine-learning-workflow"><a class="header" href="#machine-learning-workflow">Machine learning workflow</a></h2>
+<ol>
+<li>Structuring the ML project</li>
+</ol>
+<p>First of all, we need to differentiate the <strong>development space</strong> &amp; the <strong>data space</strong>. Usually, HPCs allocate a large amount of disk storage capacity in a specific place (i.e. <code>/cluster/projects/</code> for SAGA) and a smaller amount of disk storage capacity to store the scripts used to run an analysis (i.e. <code>/cluster/home/</code>)</p>
+<p>For instance, for this specific project (nn5019k) we have 20GB of space in <code>/cluster/home/bencretois</code> and 1TB in <code>/cluster/projects/nn5019k</code> as displayed with the command <code>dusage</code> below:</p>
+<pre><code>[bencretois@login-5.SAGA ~]$ dusage
+
+dusage v0.1.4
+                          path    backup    space used     quota    files      quota
+------------------------------  --------  ------------  --------  -------  ---------
+                      /cluster        no       5.6 GiB         -   38 819          -
+      /cluster/home/bencretois       yes       4.6 GiB  20.0 GiB    1 311    100 000
+/cluster/work/users/bencretois        no       0.0 KiB         -        0          -
+     /cluster/projects/nn5019k       yes     938.2 MiB   1.0 TiB   37 508  1 000 000
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="acknowlegments"><a class="header" href="#acknowlegments">Acknowlegments</a></h1>
 <p>This document would not have been possible without the inputs of Francesco Frassinelli, Kjetil Grun and Stig Clausen.</p>
 
