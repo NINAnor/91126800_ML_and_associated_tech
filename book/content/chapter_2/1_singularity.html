@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1: High Performance Computing (HPC) - Documentation on using HPC and containers for Machine Learning</title>
+        <title>Walk through Singularity - Documentation on using HPC and containers for Machine Learning</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html" class="active"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_2/1_singularity.html" class="active"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,19 +142,78 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="what-is-hpc-and-why-using-it"><a class="header" href="#what-is-hpc-and-why-using-it">What is HPC and why using it?</a></h1>
-<p><strong>High performance computing</strong> (HPC) generally refers to processing complex calculations at high speeds across multiple servers in parallel. Those groups of servers are known as clusters and are composed of <strong>hundreds or even thousands of compute servers</strong> that have been connected through a network. </p>
-<p>With the increased use of technologies like the Internet of Things (IoT), artificial intelligence (AI), and machine learning (ML), organizations are producing huge quantities of data, and they need to be able to process and use that data more quickly in real-time. To power the analysis of such large dataset it is often more practical / mandatory to make use of supercomputing. Supercomputing enables fast processing of data and training of complex algorithms such as neural networks for image and sound recognition.</p>
+                        <h1 id="singularity"><a class="header" href="#singularity">Singularity</a></h1>
+<p>Singularity is a <strong>container platform</strong>. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall. </p>
+<h2 id="singularity-image-format-file"><a class="header" href="#singularity-image-format-file">Singularity Image Format file</a></h2>
+<p><strong>Singularity</strong> uses <strong>Singularity Image Format</strong> (<code>.sif</code>) files to run containers. <code>sif</code> files can be built through two processes:</p>
+<ul>
+<li>Downloading pre-built images</li>
+<li>Building images from scratch</li>
+</ul>
+<p>Building images from scratch require <strong>root access</strong> and since we do not have <strong>root access</strong> at NINA we need to rely on downloading pre-built images to build our <code>.sif</code> files.</p>
+<h2 id="downloading-pre-built-images-as-sif-files"><a class="header" href="#downloading-pre-built-images-as-sif-files">Downloading pre-built images as <code>.sif</code> files</a></h2>
+<p>It is possible to download images from the public image registries using <strong>Singularity</strong> using <code>singularity pull</code>. For instance, you can pull the <a href="https://hub.docker.com/_/python">latest official python image from docker hub</a> on saga using the command:</p>
+<pre><code>singularity pull docker://python
+</code></pre>
+<p>The <code>docker://</code> uri is used to reference Docker images served from a registry. In this case <code>pull</code> does not just download an image file. Docker images are stored in layers, so <code>pull</code> combines those layers into a usable <strong>Singularity file</strong>.</p>
+<p>I make sure that the images has been pulled:</p>
+<pre><code>[bencretois@login-1.SAGA ~]$ ls
+python_latest.sif
+</code></pre>
+<h2 id="downloading-your-own-custom-image"><a class="header" href="#downloading-your-own-custom-image">Downloading your own custom image</a></h2>
+<p>In most case you will want to use <strong>an image that you built</strong> so that the depencies required to run your custom software are already specified and installed. Since we do not have <strong>root access</strong> at NINA we follow the following workflow:</p>
+<ol>
+<li>Specify a <code>Dockerfile</code></li>
+<li>Build the docker image</li>
+<li>Push the docker image in a registry</li>
+<li>Pull the image as a <code>.sif</code> file from a HPC cluster</li>
+</ol>
+<p>Below we describe and provide an example for each step.</p>
+<h3 id="1-specify-a-dockerfile"><a class="header" href="#1-specify-a-dockerfile">1. Specify a <code>Dockerfile</code></a></h3>
+<p>We first write a <code>Dockerfile</code> containing all we need to run our software. In this case, we want to train a cat and dog picture classifier and we need to write the <code>Dockerfile</code> accordingly.</p>
+<pre><code>FROM python:3.8
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN pip3 install poetry 
+
+WORKDIR /app
+COPY pyproject.toml poetry.lock ./
+
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root
+
+COPY . ./
+
+ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
+</code></pre>
+<p>In this <code>Dockerfile</code> we first use the official image for python.3.8. </p>
+<p>Then we install <a href="https://python-poetry.org/">poetry</a> (which is the python package manager) using <code>pip</code>. We recommand <strong>poetry</strong> over <strong>anaconda</strong> as we ran into some problems running <strong>anaconda</strong> with Docker. </p>
+<p>We set the working directory of the container as <code>/app</code></p>
+<p>We copy both <code>pyproject.toml</code> and <code>poetry.lock</code> in the container so that <code>poetry</code> knows which packages to install</p>
+<p>We install the packages necessary to run our machine learning experiment</p>
+<p>And finally we specify the <code>PYTHONPATH</code> so that scripts that are in certain folders can read the scripts which are stored in other folders.</p>
+<h3 id="2-build-the-docker-image"><a class="header" href="#2-build-the-docker-image">2. Build the docker image</a></h3>
+<p>Building the docker image implies that <code>docker</code> is installed on your system. At NINA it is possible to install <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> to use Docker on the remote server. Please contact Datahjelp which can assist you setting up either <strong>Docker Desktop</strong> or the <strong>VDI</strong> .</p>
+<p>Once you have access to <code>docker</code> you can build your custom image using the command:</p>
+<p><code>docker build -t ml_image -f Dockerfile .</code></p>
+<p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
+<p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
+<h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
+<h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
+<p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
+<pre><code>singularity pull docker://ml_image
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../content/chapter_2/0_introduction_containers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../content/chapter_1/1_introduction_to_sigma2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../content/chapter_3_FileSystem.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -164,11 +223,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../content/chapter_2/0_introduction_containers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../content/chapter_1/1_introduction_to_sigma2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../content/chapter_3_FileSystem.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

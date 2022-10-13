@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html" class="active"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2_Containers.html"><strong aria-hidden="true">2.</strong> Chapter 3: Containers</a></li><li class="chapter-item expanded "><a href="../../content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html" class="active"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,14 +142,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="2-navigating-in-sigma2s-hpc-server"><a class="header" href="#2-navigating-in-sigma2s-hpc-server">2. Navigating in Sigma2's HPC server</a></h2>
-<h3 id="21-bash-crash-course"><a class="header" href="#21-bash-crash-course">2.1 bash crash course</a></h3>
+                        <h1 id="navigating-in-sigma2s-hpc-server"><a class="header" href="#navigating-in-sigma2s-hpc-server">Navigating in Sigma2's HPC server</a></h1>
+<h2 id="bash-crash-course"><a class="header" href="#bash-crash-course">bash crash course</a></h2>
 <p>Communication between you and the HPC server is usually done through an interface named a <code>bash</code> and no <strong>Graphical User Interface (GUI)</strong> is provided</p>
 <p>Here is how the bash looks like</p>
 <pre><code>[bencretois@login-5.SAGA ~]$ 
 </code></pre>
 <p>Communicating with a bash requires learning a particular programming language, <strong>bash scripting</strong>. Below we provide a list of selected commands that will allow you to navigate in HPC server:</p>
-<h4 id="change-directory"><a class="header" href="#change-directory">Change directory</a></h4>
+<h3 id="change-directory"><a class="header" href="#change-directory">Change directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
 <li><code>cd + path to the directory</code> </li>
@@ -158,7 +158,7 @@
 <pre><code>[bencretois@login-5.SAGA ~]$ cd deepexperiments/
 [bencretois@login-5.SAGA ~/deepexperiments]$
 </code></pre>
-<h4 id="get-to-the-previous-directory"><a class="header" href="#get-to-the-previous-directory">Get to the previous directory</a></h4>
+<h3 id="get-to-the-previous-directory"><a class="header" href="#get-to-the-previous-directory">Get to the previous directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
 <li><code>cd ..</code> -&gt; get to the previous directory</li>
@@ -167,7 +167,7 @@
 <pre><code>[bencretois@login-5.SAGA ~/deepexperiments]$ cd ..
 [bencretois@login-5.SAGA ~]$
 </code></pre>
-<h4 id="list-the-content-of-a-directory"><a class="header" href="#list-the-content-of-a-directory">List the content of a directory</a></h4>
+<h3 id="list-the-content-of-a-directory"><a class="header" href="#list-the-content-of-a-directory">List the content of a directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
 <li><code>ls</code> + name of a directory - Note that <code>ls</code> by default list the files of your current directory </li>
@@ -179,7 +179,7 @@ bash_cheatsheet.md   Dockerfile             list_ignore.txt  poetry.lock     run
 bayesianfy.ipynb     docker_run_jupyter.sh  models           pyproject.toml  scripts         utils
 deepexperiments.sif  jobs
 </code></pre>
-<h4 id="get-the-path-of-your-current-directory"><a class="header" href="#get-the-path-of-your-current-directory">get the path of your current directory</a></h4>
+<h3 id="get-the-path-of-your-current-directory"><a class="header" href="#get-the-path-of-your-current-directory">get the path of your current directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
 <li><code>pwd</code> </li>
@@ -188,7 +188,7 @@ deepexperiments.sif  jobs
 <pre><code>[bencretois@login-5.SAGA ~]$ pwd
 /cluster/home/bencretois
 </code></pre>
-<h4 id="create-a-new-folder"><a class="header" href="#create-a-new-folder">Create a new folder</a></h4>
+<h3 id="create-a-new-folder"><a class="header" href="#create-a-new-folder">Create a new folder</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
 <li><code>mkdir</code> + name of the folder you want to create</li>
@@ -198,18 +198,18 @@ deepexperiments.sif  jobs
 [bencretois@login-5.SAGA ~]$ ls
 deepexperiments new_folder
 </code></pre>
-<h4 id="learning-more-bash-commands"><a class="header" href="#learning-more-bash-commands">Learning more bash commands</a></h4>
+<h3 id="learning-more-bash-commands"><a class="header" href="#learning-more-bash-commands">Learning more bash commands</a></h3>
 <p><em>Bash command</em>* are very well documented on Internet and if you wish to learn more you can begin <a href="https://www.educative.io/blog/bash-shell-command-cheat-sheet">here</a>.</p>
-<h3 id="22-bash-commands-specific-to-sigma2s-hpc"><a class="header" href="#22-bash-commands-specific-to-sigma2s-hpc">2.2. Bash commands specific to Sigma2's HPC</a></h3>
+<h2 id="bash-commands-specific-to-sigma2s-hpc"><a class="header" href="#bash-commands-specific-to-sigma2s-hpc">Bash commands specific to Sigma2's HPC</a></h2>
 <p>There are also some useful commands specific to your Sigma2 account:</p>
-<h4 id="list-your-projects"><a class="header" href="#list-your-projects">List your projects</a></h4>
+<h3 id="list-your-projects"><a class="header" href="#list-your-projects">List your projects</a></h3>
 <p><strong>Command:</strong></p>
 <p><code>projects</code> -&gt; list your projects</p>
 <p><strong>Output:</strong></p>
 <pre><code>[bencretois@login-5.SAGA ~]$ projects
 nn5019k
 </code></pre>
-<h4 id="look-at-used-space-and-allocated-quota-for-your-projects"><a class="header" href="#look-at-used-space-and-allocated-quota-for-your-projects">Look at used space and allocated quota for your projects</a></h4>
+<h3 id="look-at-used-space-and-allocated-quota-for-your-projects"><a class="header" href="#look-at-used-space-and-allocated-quota-for-your-projects">Look at used space and allocated quota for your projects</a></h3>
 <p><strong>Command:</strong></p>
 <p><code>dusage</code> -&gt; . Note that <strong>space used</strong> is what you are currently using and <strong>quota</strong> is the limit. </p>
 <p><strong>Output:</strong></p>
@@ -233,7 +233,7 @@ dusage v0.1.4
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../content/chapter_2_Containers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../content/chapter_2/0_introduction_containers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -247,7 +247,7 @@ dusage v0.1.4
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../content/chapter_2_Containers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../content/chapter_2/0_introduction_containers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
