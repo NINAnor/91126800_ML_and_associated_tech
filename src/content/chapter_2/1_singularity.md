@@ -90,7 +90,11 @@ Once you have access to `docker` you can build your custom image using the comma
 
 ### 3. Push the docker image in a registry
 
-It is possible to push your custom image directly in the **GitLab** or **GitHub** registry. Pushing the image on the **Gitlab** registry requires less manual configuration and we give an example on how to do it below.
+It is possible to push your custom image directly in the **GitLab** or **GitHub** registry. 
+
+#### Pushing the image on GitLab registry
+
+Pushing the image on the **Gitlab** registry requires less manual configuration and we give an example on how to do it below.
 
 Provided that you have a GitLab account and a GitLab project (in our example the project is called `ml_image`) for your specific task, the image should be rename as:
 
@@ -100,10 +104,70 @@ registry.gitlab.com/nina-data/ml_image:latest
 
 We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check `GitLab project -> Container registry`
 
+
+#### Pushing the image on GitHub registry
+
+In your project repository create a folder `.github/workflows` and create a file `publish_image.yml` containing the following code:
+
+```
+name: Create and publish a Docker image
+
+on:
+  push:
+    branches: main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+```
+
+Once the folder and file have been created simply **push** the `.github` to the project's GitHub repository and **GitHub Actions** will take care of building and hosting the image.
+
+Note that you will find the image in `Packages` (right sidebar of GitHub) and that you will need to make your image **public** before being able to pull it on **Sigma2**.
+
+
 ### 4. Pull the image as a `.sif` file from a HPC cluster
 
 To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:
 
 ```
-singularity pull docker://ml_image
+singularity pull docker://registry/name_of_your_image
+```
+
+For instance, to pull the image from this repository (which is hosted on GitHub):
+
+```
+ singularity pull docker://ghcr.io/ninanor/91126800_ml_and_associated_tech:main
 ```
