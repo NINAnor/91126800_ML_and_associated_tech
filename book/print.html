@@ -265,7 +265,7 @@ A[Image] --&gt; D[Container C]
 
 </pre>
 <p><em>Figure X: The image is a single file with all the dependancies and configurations to run a program. Containers are instances of an image.</em></p>
-<h3 id="image-regristry"><a class="header" href="#image-regristry">Image regristry</a></h3>
+<h3 id="image-registry"><a class="header" href="#image-registry">Image registry</a></h3>
 <p>The Registry is a stateless, highly scalable server side application that stores and lets you <strong>distribute Docker images</strong>. Registries can be private, for instance some institutes or companies have internal registries to share images amongst teams but it is also possible to share images on <strong>public</strong> registries such as <a href="https://hub.docker.com/">Docker Hub</a>, <a href="https://docs.gitlab.com/ee/user/packages/container_registry/">GitLab registry</a> or the <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub registry</a>.</p>
 <hr />
 <div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
@@ -332,6 +332,11 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 <p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
 <p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
 <h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
+<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
+<p>Provided that you have a GitLab account and a GitLab project (in our example the project is called <code>ml_image</code>) for your specific task, the image should be rename as:</p>
+<pre><code>registry.gitlab.com/nina-data/ml_image:latest
+</code></pre>
+<p>We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check <code>GitLab project -&gt; Container registry</code></p>
 <h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
 <p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
 <pre><code>singularity pull docker://ml_image
@@ -435,22 +440,6 @@ dusage v0.1.4
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 

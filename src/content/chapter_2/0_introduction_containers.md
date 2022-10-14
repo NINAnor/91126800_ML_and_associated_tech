@@ -36,9 +36,10 @@ A[Image] --> C[Container B]
 A[Image] --> D[Container C]
 
 ```
+
 *Figure X: The image is a single file with all the dependancies and configurations to run a program. Containers are instances of an image.*
 
-### Image regristry
+### Image registry
 
 The Registry is a stateless, highly scalable server side application that stores and lets you **distribute Docker images**. Registries can be private, for instance some institutes or companies have internal registries to share images amongst teams but it is also possible to share images on **public** registries such as [Docker Hub](https://hub.docker.com/), [GitLab registry](https://docs.gitlab.com/ee/user/packages/container_registry/) or the [GitHub registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 

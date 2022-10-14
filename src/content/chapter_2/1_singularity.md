@@ -90,8 +90,15 @@ Once you have access to `docker` you can build your custom image using the comma
 
 ### 3. Push the docker image in a registry
 
+It is possible to push your custom image directly in the **GitLab** or **GitHub** registry. Pushing the image on the **Gitlab** registry requires less manual configuration and we give an example on how to do it below.
 
+Provided that you have a GitLab account and a GitLab project (in our example the project is called `ml_image`) for your specific task, the image should be rename as:
 
+```
+registry.gitlab.com/nina-data/ml_image:latest
+```
+
+We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check `GitLab project -> Container registry`
 
 ### 4. Pull the image as a `.sif` file from a HPC cluster
 
