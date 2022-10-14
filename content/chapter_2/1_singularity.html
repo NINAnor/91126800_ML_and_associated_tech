@@ -192,14 +192,65 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 <p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
 <p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
 <h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
-<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
+<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. </p>
+<h4 id="pushing-the-image-on-gitlab-registry"><a class="header" href="#pushing-the-image-on-gitlab-registry">Pushing the image on GitLab registry</a></h4>
+<p>Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
 <p>Provided that you have a GitLab account and a GitLab project (in our example the project is called <code>ml_image</code>) for your specific task, the image should be rename as:</p>
 <pre><code>registry.gitlab.com/nina-data/ml_image:latest
 </code></pre>
 <p>We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check <code>GitLab project -&gt; Container registry</code></p>
+<h4 id="pushing-the-image-on-github-registry"><a class="header" href="#pushing-the-image-on-github-registry">Pushing the image on GitHub registry</a></h4>
+<p>In your project repository create a folder <code>.github/workflows</code> and create a file <code>publish_image.yml</code> containing the following code:</p>
+<pre><code>name: Create and publish a Docker image
+
+on:
+  push:
+    branches: main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+</code></pre>
+<p>Once the folder and file have been created simply <strong>push</strong> the <code>.github</code> to the project's GitHub repository and <strong>GitHub Actions</strong> will take care of building and hosting the image.</p>
+<p>Note that you will find the image in <code>Packages</code> (right sidebar of GitHub) and that you will need to make your image <strong>public</strong> before being able to pull it on <strong>Sigma2</strong>.</p>
 <h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
 <p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
-<pre><code>singularity pull docker://ml_image
+<pre><code>singularity pull docker://registry/name_of_your_image
+</code></pre>
+<p>For instance, to pull the image from this repository (which is hosted on GitHub):</p>
+<pre><code> singularity pull docker://ghcr.io/ninanor/91126800_ml_and_associated_tech:main
 </code></pre>
 
                     </main>
