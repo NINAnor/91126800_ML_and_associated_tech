@@ -192,6 +192,11 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 <p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
 <p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
 <h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
+<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
+<p>Provided that you have a GitLab account and a GitLab project (in our example the project is called <code>ml_image</code>) for your specific task, the image should be rename as:</p>
+<pre><code>registry.gitlab.com/nina-data/ml_image:latest
+</code></pre>
+<p>We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check <code>GitLab project -&gt; Container registry</code></p>
 <h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
 <p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
 <pre><code>singularity pull docker://ml_image
