@@ -9,7 +9,10 @@
     - [Navigating in HPC servers](content/chapter_1/2_navigating_in_hpc.md)
 - [Chapter 2: Containers](content/chapter_2/0_introduction_containers.md)
     - [Walk through Singularity](content/chapter_2/1_singularity.md)
-- [Chapter 4: Data management](content/chapter_3_FileSystem.md)
+    - [Using Singularity](content/chapter_2/2_using_ingularity.md)
+- [Chapter 3: File management on HPC clusters](content/chapter_3/0_introduction.md)
+    - [Copying files over to HPC clusters](content/chapter_3/1_copying.md)
+    - [Using filesystem](content/chapter_3/2_filesystem.md)
 - [Chapter 5: Case studies](content/chapter_4_Templates.md)
 - [Aknowledgments](content/acknowledgments.md)
 
