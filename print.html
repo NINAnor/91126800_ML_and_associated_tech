@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li><li class="chapter-item expanded "><a href="content/chapter_2/2_using_ingularity.html"><strong aria-hidden="true">2.2.</strong> Using Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_3/0_introduction.html"><strong aria-hidden="true">3.</strong> Chapter 3: File management on HPC clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_3/1_copying.html"><strong aria-hidden="true">3.1.</strong> Copying files over to HPC clusters</a></li><li class="chapter-item expanded "><a href="content/chapter_3/2_filesystem.html"><strong aria-hidden="true">3.2.</strong> Using filesystem</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -384,16 +384,29 @@ jobs:
 <p>For instance, to pull the image from this repository (which is hosted on GitHub):</p>
 <pre><code> singularity pull docker://ghcr.io/ninanor/91126800_ml_and_associated_tech:main
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="file-management-on-sigma2"><a class="header" href="#file-management-on-sigma2">File management on Sigma2</a></h1>
-<h3 id="23-copy-files-over-to-sigma2"><a class="header" href="#23-copy-files-over-to-sigma2">2.3. Copy files over to Sigma2</a></h3>
-<p><strong>A very important command</strong> is <code>scp</code> which allows you to copy files from your machine to the HPC machines. For instance you want to copy the script <code>train_model.py</code> over to <code>saga</code> in the folder <code>deepexperiments</code>, the command would be (using your relevant username and HPC):</p>
-<pre><code>$ scp train_model.py bencretois@saga.sigma2.no:/deepexperiments/
+<div style="break-before: page; page-break-before: always;"></div><h1 id="using-singularity"><a class="header" href="#using-singularity">Using Singularity</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="file-management-on-hpc-clusters"><a class="header" href="#file-management-on-hpc-clusters">File management on HPC clusters</a></h1>
+<p>In addition to training a machine learning model we usually want to process our data on an HPC cluster to benefit the computational resources. For example, if we want to train a complex machine learning model we want the HPC cluster to first process our data so we get <strong>tensors</strong> so they can be used as inputs for the model. <strong>Using the data requires being able to access them</strong>.</p>
+<p>There are two ways of making the data available to the HPC cluster:</p>
+<ol>
+<li>Copying the data over to the HPC cluster</li>
+<li>Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</li>
+</ol>
+<h2 id="copying-the-data-over-to-the-hpc-cluster"><a class="header" href="#copying-the-data-over-to-the-hpc-cluster">Copying the data over to the HPC cluster</a></h2>
+<p>Both methods have their advantages and drawbacks. While copying data over to the HPC cluster is conceptually simpler as it doesn't require the use of any specific library, the method will be limited by the size of the dataset. By default, if you apply for an account on one of Sigma2's HPC clusters you will be allocated <strong>1 TB</strong> of storage that can be extended up to <strong>10TB</strong>. Moreover, copying multiple TB of data can be a <strong>long process</strong>.</p>
+<h2 id="using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster"><a class="header" href="#using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster">Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</a></h2>
+<p>On the other hand, using <strong>filesystems</strong> allows you to use data stored in a remote server (e.g. cloud storage, private servers ...) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. <strong>Filesystems</strong> nevertheless require slight change in your code.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="copying-files-over-to-an-hpc-cluster"><a class="header" href="#copying-files-over-to-an-hpc-cluster">Copying files over to an HPC cluster</a></h1>
+<p>It is possible to copy / transfer files using simple <strong>bash</strong> commands. <code>scp</code> is used to simply <strong>copy</strong> data over while <code>rsync</code> is used to <strong>synchronise</strong> folders.</p>
+<h2 id="scp-copying-files"><a class="header" href="#scp-copying-files"><code>scp</code>: Copying files</a></h2>
+<p>The first command  is <code>scp</code> which allows you to copy files from your machine to the HPC machines. For instance you want to copy the script <code>train_model.py</code> from the <strong>template</strong> folder over to <code>saga</code> in the project folder <strong>nn8055k</strong>, we would write (using your relevant username and HPC):</p>
+<pre><code>$ scp train_model.py bencretois@saga.sigma2.no:/cluster/projects/nn8055k/
 </code></pre>
-<p>With <code>scp</code> it is also possible to copy a folder over to the HPC machine, you will need to add the flag <code>-r</code> for this. For instance, if I want to copy the entire <code>deepexperiments</code> folder over to <code>saga</code> I can write:</p>
-<pre><code>$ scp -r train_model.py bencretois@saga.sigma2.no:/deepexperiments/
+<p>With <code>scp</code> it is also possible to <strong>copy a folder</strong> over to the HPC machine, you will need to add the flag <code>-r</code> for this. For instance, if I want to copy the entire <code>template</code> folder over to <code>saga</code> I can write:</p>
+<pre><code>$ scp -r template bencretois@saga.sigma2.no:/cluter/projects/nn8055k
 </code></pre>
-<h3 id="24-synchronizing-your-local-repository-with-your-remote-repository"><a class="header" href="#24-synchronizing-your-local-repository-with-your-remote-repository">2.4. Synchronizing your local repository with your remote repository</a></h3>
-<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code></p>
+<h2 id="rsync-synchronizing-a-local-repository-with-a-remote-repository"><a class="header" href="#rsync-synchronizing-a-local-repository-with-a-remote-repository"><code>rsync</code>: Synchronizing a local repository with a remote repository</a></h2>
+<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code>. Synchronizing has the advantage of being more flexible than <code>scp</code> and has some optimisations to make the transfer of files faster. Moreoever <code>rsync</code> has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. </p>
 <pre><code>$ rsync -e ssh -avz ./local_repo user@server:/remote_repo
 </code></pre>
 <p><code>-a</code> is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings. </p>
@@ -411,30 +424,7 @@ jobs:
 file1.txt
 folder2
 </code></pre>
-<pre><code>def doConnection(connection_string):
-
-    myfs = fs.open_fs(connection_string)
-    return myfs
-</code></pre>
-<pre><code>def walk_audio(filesystem, input_path):
-    # Get all files in directory with os.walk
-    walker = filesystem.walk(input_path, filter=['*.wav', '*.flac', '*.mp3', '*.ogg', '*.m4a', '*.WAV', '*.MP3'])
-    for path, dirs, flist in walker:
-        for f in flist:
-            yield fs.path.combine(path, f.name)
-</code></pre>
-<pre><code>def parseInputFiles(filesystem, input_path):
-
-    files = []
-
-    for index, audiofile in enumerate(walk_audio(filesystem, input_path)):
-        files.append(audiofile)
-            
-    print('Found {} files for training'.format(len(files)))
-
-    return files
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
 <h2 id="3-running-scripts-on-sigma2"><a class="header" href="#3-running-scripts-on-sigma2">3. Running scripts on Sigma2</a></h2>
 <h3 id="31-anatomy-of-a-job-script"><a class="header" href="#31-anatomy-of-a-job-script">3.1. Anatomy of a job script</a></h3>
 <p>To run a job on a SIGMA2 server we need to create a shell script called a job script. The job script is a plain-text file containing any number of commands, including your main computational task</p>

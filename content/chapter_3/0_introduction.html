@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1: High Performance Computing (HPC) - Documentation on using HPC and containers for Machine Learning</title>
+        <title>Chapter 3: File management on HPC clusters - Documentation on using HPC and containers for Machine Learning</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html" class="active"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li><li class="chapter-item expanded "><a href="../../content/chapter_2/2_using_ingularity.html"><strong aria-hidden="true">2.2.</strong> Using Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_3/0_introduction.html"><strong aria-hidden="true">3.</strong> Chapter 3: File management on HPC clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_3/1_copying.html"><strong aria-hidden="true">3.1.</strong> Copying files over to HPC clusters</a></li><li class="chapter-item expanded "><a href="../../content/chapter_3/2_filesystem.html"><strong aria-hidden="true">3.2.</strong> Using filesystem</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="../../content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="../../content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li><li class="chapter-item expanded "><a href="../../content/chapter_2/2_using_ingularity.html"><strong aria-hidden="true">2.2.</strong> Using Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_3/0_introduction.html" class="active"><strong aria-hidden="true">3.</strong> Chapter 3: File management on HPC clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../content/chapter_3/1_copying.html"><strong aria-hidden="true">3.1.</strong> Copying files over to HPC clusters</a></li><li class="chapter-item expanded "><a href="../../content/chapter_3/2_filesystem.html"><strong aria-hidden="true">3.2.</strong> Using filesystem</a></li></ol></li><li class="chapter-item expanded "><a href="../../content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="../../content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,18 +134,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="what-is-hpc-and-why-using-it"><a class="header" href="#what-is-hpc-and-why-using-it">What is HPC and why using it?</a></h1>
-<p><strong>High performance computing</strong> (HPC) generally refers to processing complex calculations at high speeds across multiple servers in parallel. Those groups of servers are known as clusters and are composed of <strong>hundreds or even thousands of compute servers</strong> that have been connected through a network. </p>
-<p>With the increased use of technologies like the Internet of Things (IoT), artificial intelligence (AI), and machine learning (ML), organizations are producing huge quantities of data, and they need to be able to process and use that data more quickly in real-time. To power the analysis of such large dataset it is often more practical / mandatory to make use of supercomputing. Supercomputing enables fast processing of data and training of complex algorithms such as neural networks for image and sound recognition.</p>
+                        <h1 id="file-management-on-hpc-clusters"><a class="header" href="#file-management-on-hpc-clusters">File management on HPC clusters</a></h1>
+<p>In addition to training a machine learning model we usually want to process our data on an HPC cluster to benefit the computational resources. For example, if we want to train a complex machine learning model we want the HPC cluster to first process our data so we get <strong>tensors</strong> so they can be used as inputs for the model. <strong>Using the data requires being able to access them</strong>.</p>
+<p>There are two ways of making the data available to the HPC cluster:</p>
+<ol>
+<li>Copying the data over to the HPC cluster</li>
+<li>Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</li>
+</ol>
+<h2 id="copying-the-data-over-to-the-hpc-cluster"><a class="header" href="#copying-the-data-over-to-the-hpc-cluster">Copying the data over to the HPC cluster</a></h2>
+<p>Both methods have their advantages and drawbacks. While copying data over to the HPC cluster is conceptually simpler as it doesn't require the use of any specific library, the method will be limited by the size of the dataset. By default, if you apply for an account on one of Sigma2's HPC clusters you will be allocated <strong>1 TB</strong> of storage that can be extended up to <strong>10TB</strong>. Moreover, copying multiple TB of data can be a <strong>long process</strong>.</p>
+<h2 id="using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster"><a class="header" href="#using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster">Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</a></h2>
+<p>On the other hand, using <strong>filesystems</strong> allows you to use data stored in a remote server (e.g. cloud storage, private servers ...) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. <strong>Filesystems</strong> nevertheless require slight change in your code.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../content/chapter_2/2_using_ingularity.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../../content/chapter_1/1_introduction_to_sigma2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../content/chapter_3/1_copying.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -154,10 +162,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../content/chapter_2/2_using_ingularity.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../../content/chapter_1/1_introduction_to_sigma2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../content/chapter_3/1_copying.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
