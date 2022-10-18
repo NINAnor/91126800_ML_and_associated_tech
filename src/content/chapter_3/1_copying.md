@@ -20,8 +20,6 @@ $ scp -r template bencretois@saga.sigma2.no:/cluter/projects/nn8055k
 
 Instead of copying all files from your local to remote folder you can synchronze the two folders with `rsync`. Synchronizing has the advantage of being more flexible than `scp` and has some optimisations to make the transfer of files faster. Moreoever `rsync` has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. 
 
-
-
 ```
 $ rsync -e ssh -avz ./local_repo user@server:/remote_repo
 ```
@@ -46,7 +44,7 @@ However, in some cases there are files that we do not want to send to the remote
 $ rsync -e ssh -avz --exclude-from{"list_ignore.txt"} ./local_repo user@server:/remote_repo
 ```
 
-With `list_ignore.txt`:
+With `list_ignore.txt` looking like:
 
 ```
 folder1

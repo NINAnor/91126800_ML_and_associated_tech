@@ -1,6 +1,6 @@
 # Navigating in Sigma2's HPC server
 
-## bash crash course
+## Basic bash commands
 
 Communication between you and the HPC server is usually done through an interface named a `bash` and no **Graphical User Interface (GUI)** is provided
 

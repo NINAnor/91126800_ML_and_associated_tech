@@ -13,4 +13,7 @@ command = "mdbook-mermaid"
 [output]
 
 [output.html]
+mathjax-support = true
+site-url = "/mdBook/"
+git-repository-url = "https://github.com/NINAnor/91126800_ML_and_associated_tech"
 additional-js = ["mermaid.min.js", "mermaid-init.js"]

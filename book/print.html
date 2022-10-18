@@ -32,6 +32,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -82,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in HPC servers</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_3_FileSystem.html"><strong aria-hidden="true">3.</strong> Chapter 4: Data management</a></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 5: Case studies</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Glossary of terms and names</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> List of acronyns</div></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/3_job_script.html"><strong aria-hidden="true">1.3.</strong> Job scripts</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li><li class="chapter-item expanded "><a href="content/chapter_2/2_using_singularity.html"><strong aria-hidden="true">2.2.</strong> Using Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_3/0_introduction.html"><strong aria-hidden="true">3.</strong> Chapter 3: File management on HPC clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_3/1_copying.html"><strong aria-hidden="true">3.1.</strong> Copying files over to HPC clusters</a></li><li class="chapter-item expanded "><a href="content/chapter_3/2_filesystem.html"><strong aria-hidden="true">3.2.</strong> Using filesystem</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_4_Templates.html"><strong aria-hidden="true">4.</strong> Chapter 4: Template</a></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">5.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><a href="content/Acronyms.html"><strong aria-hidden="true">6.</strong> List of acronyns</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -116,6 +118,9 @@
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/NINAnor/91126800_ML_and_associated_tech" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
                     </div>
@@ -161,7 +166,7 @@
 </code></pre>
 <p>The first time you log in, you will be asked to set your <strong>password</strong> which will have to be used at any subsequent connection to the HPC server.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="navigating-in-sigma2s-hpc-server"><a class="header" href="#navigating-in-sigma2s-hpc-server">Navigating in Sigma2's HPC server</a></h1>
-<h2 id="bash-crash-course"><a class="header" href="#bash-crash-course">bash crash course</a></h2>
+<h2 id="basic-bash-commands"><a class="header" href="#basic-bash-commands">Basic bash commands</a></h2>
 <p>Communication between you and the HPC server is usually done through an interface named a <code>bash</code> and no <strong>Graphical User Interface (GUI)</strong> is provided</p>
 <p>Here is how the bash looks like</p>
 <pre><code>[bencretois@login-5.SAGA ~]$ 
@@ -242,7 +247,7 @@ dusage v0.1.4
      /cluster/projects/nn5019k       yes     938.2 MiB   1.0 TiB   37 508  1 000 000
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="container-technology"><a class="header" href="#container-technology">Container technology</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="container-technology"><a class="header" href="#container-technology">Container technology</a></h1>
 <p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
 <p>Containers are a solution to the problem of how to get software to run reliably when moved from one computing environment to another. For example, containers can be used to export the training of a ML model from your local machine to a HPC server without the strain of installing all the dependancies necessary to run the training. Think of a container as a shipping container for software — it holds important content like files and programs so that an application can be delivered efficiently from producer to consumer.</p>
 <p>To create and use <em>containers</em> the use of a <em>container platform</em> is necessary. <strong>Docker</strong> is the most popular but others exist such as <a href="https://podman.io/">podman</a>. On the other hand, <strong>Docker</strong> and similar have some limitations which makes it difficult to use on HPC clusters and more powerful platform such as <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">Singularity</a> are necessary.</p>
@@ -332,25 +337,121 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 <p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
 <p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
 <h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
-<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
+<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. </p>
+<h4 id="pushing-the-image-on-gitlab-registry"><a class="header" href="#pushing-the-image-on-gitlab-registry">Pushing the image on GitLab registry</a></h4>
+<p>Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
 <p>Provided that you have a GitLab account and a GitLab project (in our example the project is called <code>ml_image</code>) for your specific task, the image should be rename as:</p>
 <pre><code>registry.gitlab.com/nina-data/ml_image:latest
 </code></pre>
 <p>We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check <code>GitLab project -&gt; Container registry</code></p>
+<h4 id="pushing-the-image-on-github-registry"><a class="header" href="#pushing-the-image-on-github-registry">Pushing the image on GitHub registry</a></h4>
+<p>In your project repository create a folder <code>.github/workflows</code> and create a file <code>publish_image.yml</code> containing the following code:</p>
+<pre><code>name: Create and publish a Docker image
+
+on:
+  push:
+    branches: main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+</code></pre>
+<p>Once the folder and file have been created simply <strong>push</strong> the <code>.github</code> to the project's GitHub repository and <strong>GitHub Actions</strong> will take care of building and hosting the image.</p>
+<p>Note that you will find the image in <code>Packages</code> (right sidebar of GitHub) and that you will need to make your image <strong>public</strong> before being able to pull it on <strong>Sigma2</strong>.</p>
 <h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
 <p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
-<pre><code>singularity pull docker://ml_image
+<pre><code>singularity pull docker://registry/name_of_your_image
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="file-management-on-sigma2"><a class="header" href="#file-management-on-sigma2">File management on Sigma2</a></h1>
-<h3 id="23-copy-files-over-to-sigma2"><a class="header" href="#23-copy-files-over-to-sigma2">2.3. Copy files over to Sigma2</a></h3>
-<p><strong>A very important command</strong> is <code>scp</code> which allows you to copy files from your machine to the HPC machines. For instance you want to copy the script <code>train_model.py</code> over to <code>saga</code> in the folder <code>deepexperiments</code>, the command would be (using your relevant username and HPC):</p>
-<pre><code>$ scp train_model.py bencretois@saga.sigma2.no:/deepexperiments/
+<p>For instance, to pull the image from this repository (which is hosted on GitHub):</p>
+<pre><code> singularity pull docker://ghcr.io/ninanor/91126800_ml_and_associated_tech:main
 </code></pre>
-<p>With <code>scp</code> it is also possible to copy a folder over to the HPC machine, you will need to add the flag <code>-r</code> for this. For instance, if I want to copy the entire <code>deepexperiments</code> folder over to <code>saga</code> I can write:</p>
-<pre><code>$ scp -r train_model.py bencretois@saga.sigma2.no:/deepexperiments/
+<div style="break-before: page; page-break-before: always;"></div><h1 id="interact-with-images"><a class="header" href="#interact-with-images">Interact with images</a></h1>
+<p>Now that the <code>.sif</code> file has been <strong>pulled</strong>, it is possible to interact with it via multiple ways.</p>
+<h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
+<p>The <code>shell</code> command allows you to spawn a new bash <strong>within your container</strong> and interact with it as though it were a small virtual machine.</p>
+<pre><code>[bencretois@login-1.SAGA ~]$ singularity shell 91126800_ml_and_associated_tech_main.sif
+Singularity&gt;
 </code></pre>
-<h3 id="24-synchronizing-your-local-repository-with-your-remote-repository"><a class="header" href="#24-synchronizing-your-local-repository-with-your-remote-repository">2.4. Synchronizing your local repository with your remote repository</a></h3>
-<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code></p>
+<p>The change in prompt indicates that you have entered the container. Once inside of a Singularity container, you are the same user as you are on the host system <strong>except that you have root access, meaning that you can install packages and other software in your container</strong>.</p>
+<p>Note that with <strong>singularity</strong>, when you are inside of a Singularity container, you are the same user as you are on the host system.</p>
+<pre><code>Singularity&gt; whoami
+bencretois
+</code></pre>
+<h2 id="executing-commands"><a class="header" href="#executing-commands">Executing commands</a></h2>
+<p>The <code>exec</code> command allows you to execute a custom command within a container by specifying the image file. For instance, if I want to train a Machine Learning model using the <code>.sif</code> image we could write:</p>
+<pre><code>singularity exec \
+                91126800_ml_and_associated_tech_main.sif \
+                python main_scripts/train_model.py
+</code></pre>
+<h2 id="specifying-bind-paths"><a class="header" href="#specifying-bind-paths">Specifying bind paths</a></h2>
+<p>If the data we want to process / use to train a machine learning model are stored in a different folder (for instance our <code>.sif</code> file is in <code>cluster/projects/nn8055k</code> but the data is in <code>cluster/projects/nn8054k</code>) we need to expose <code>cluster/projects/nn8054k</code> or in other words, make it available to the container. The flag <code>--bind</code> fill that purpose. </p>
+<p>We would run the container as follow:</p>
+<pre><code>singularity exec \
+                --bind /cluster/projects/nn8054k \
+                91126800_ml_and_associated_tech_main.sif \
+                python main_scripts/train_model.py
+</code></pre>
+<h2 id="exposing-gpus"><a class="header" href="#exposing-gpus">Exposing GPUs</a></h2>
+<p>When training or using a machine learning model it will usually be preferable to use a GPU(s) for accelerating the processed. The container being an &quot;isolated&quot; environment, it is required to specify that we want to expose GPUs to our container. This can simply be done by adding the flag <code>--nv</code>. For example:</p>
+<pre><code>singularity exec \
+                --nv \
+                91126800_ml_and_associated_tech_main.sif \
+                python main_scripts/train_model.py
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="file-management-on-hpc-clusters"><a class="header" href="#file-management-on-hpc-clusters">File management on HPC clusters</a></h1>
+<p>In addition to training a machine learning model we usually want to process our data on an HPC cluster to benefit the computational resources. For example, if we want to train a complex machine learning model we want the HPC cluster to first process our data so we get <strong>tensors</strong> so they can be used as inputs for the model. <strong>Using the data requires being able to access them</strong>.</p>
+<p>There are two ways of making the data available to the HPC cluster:</p>
+<ol>
+<li>Copying the data over to the HPC cluster</li>
+<li>Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</li>
+</ol>
+<h2 id="copying-the-data-over-to-the-hpc-cluster"><a class="header" href="#copying-the-data-over-to-the-hpc-cluster">Copying the data over to the HPC cluster</a></h2>
+<p>Both methods have their advantages and drawbacks. While copying data over to the HPC cluster is conceptually simpler as it doesn't require the use of any specific library, the method will be limited by the size of the dataset. By default, if you apply for an account on one of Sigma2's HPC clusters you will be allocated <strong>1 TB</strong> of storage that can be extended up to <strong>10TB</strong>. Moreover, copying multiple TB of data can be a <strong>long process</strong>.</p>
+<h2 id="using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster"><a class="header" href="#using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster">Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</a></h2>
+<p>On the other hand, using <strong>filesystems</strong> allows you to use data stored in a remote server (e.g. cloud storage, private servers ...) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. <strong>Filesystems</strong> nevertheless require slight change in your code.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="copying-files-over-to-an-hpc-cluster"><a class="header" href="#copying-files-over-to-an-hpc-cluster">Copying files over to an HPC cluster</a></h1>
+<p>It is possible to copy / transfer files using simple <strong>bash</strong> commands. <code>scp</code> is used to simply <strong>copy</strong> data over while <code>rsync</code> is used to <strong>synchronise</strong> folders.</p>
+<h2 id="scp-copying-files"><a class="header" href="#scp-copying-files"><code>scp</code>: Copying files</a></h2>
+<p>The first command  is <code>scp</code> which allows you to copy files from your machine to the HPC machines. For instance you want to copy the script <code>train_model.py</code> from the <strong>template</strong> folder over to <code>saga</code> in the project folder <strong>nn8055k</strong>, we would write (using your relevant username and HPC):</p>
+<pre><code>$ scp train_model.py bencretois@saga.sigma2.no:/cluster/projects/nn8055k/
+</code></pre>
+<p>With <code>scp</code> it is also possible to <strong>copy a folder</strong> over to the HPC machine, you will need to add the flag <code>-r</code> for this. For instance, if I want to copy the entire <code>template</code> folder over to <code>saga</code> I can write:</p>
+<pre><code>$ scp -r template bencretois@saga.sigma2.no:/cluter/projects/nn8055k
+</code></pre>
+<h2 id="rsync-synchronizing-a-local-repository-with-a-remote-repository"><a class="header" href="#rsync-synchronizing-a-local-repository-with-a-remote-repository"><code>rsync</code>: Synchronizing a local repository with a remote repository</a></h2>
+<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code>. Synchronizing has the advantage of being more flexible than <code>scp</code> and has some optimisations to make the transfer of files faster. Moreoever <code>rsync</code> has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. </p>
 <pre><code>$ rsync -e ssh -avz ./local_repo user@server:/remote_repo
 </code></pre>
 <p><code>-a</code> is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings. </p>
@@ -363,34 +464,53 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 <p>However, in some cases there are files that we do not want to send to the remote repository. In these cases with can generate and <code>.txt</code> file containing a list of files to exclude.</p>
 <pre><code>$ rsync -e ssh -avz --exclude-from{&quot;list_ignore.txt&quot;} ./local_repo user@server:/remote_repo
 </code></pre>
-<p>With <code>list_ignore.txt</code>:</p>
+<p>With <code>list_ignore.txt</code> looking like:</p>
 <pre><code>folder1
 file1.txt
 folder2
 </code></pre>
-<pre><code>def doConnection(connection_string):
+<div style="break-before: page; page-break-before: always;"></div><h1 id="filesystem"><a class="header" href="#filesystem">Filesystem</a></h1>
+<p>A <strong>filesystem</strong> (or filesystem) is the way in which files are named and where they are placed logically for <strong>storage</strong> and <strong>retrieval</strong>. Without a file system, stored information wouldn't be isolated into individual files and would be difficult to identify and retrieve. As data capacities increase, the organization and accessibility of individual files are becoming even more important in data storage. <sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<pre class="mermaid">
+graph TB;
+
+A[Project folder] --&gt; B[Camera trap pictures]
+A --&gt; C[Code]
+A --&gt; D[Report.doc]
+B --&gt; E[Pictures of deer]
+B --&gt; F[Pictures of birds]
+C --&gt; G[myscript.py]
+</pre>
+<h2 id="pyfilesystem-a-filesystem-abstraction-for-python"><a class="header" href="#pyfilesystem-a-filesystem-abstraction-for-python">Pyfilesystem: a filesystem abstraction for Python</a></h2>
+<p>A filesystem abstraction allows you to work with files and directories in archives, memory, the cloud etc. as easily as your local drive. <strong>It makes your code agnostic to where the data is stored</strong>.</p>
+<p><strong><a href="https://www.pyfilesystem.org/">Pyfilesystem</a></strong> is a filesystem abstraction <strong>for Python</strong>. This means that in your python code you can fully replace the use of <code>os</code> with <strong>Pyfilesystem</strong>. </p>
+<p>Suppose the data is stored on <code>NIRD</code> in the project folder <code>/folder/my_data</code> but I want to process the data on <code>SAGA</code> to benefit from optimal computational resources. To access the data on <code>NIRD</code> I would make the following change to my code:</p>
+<p>First, a connection to <code>NIRD</code> must be established. The connection to <code>NIRD</code> is done using the <code>ssh</code> protocol.</p>
+<pre><code class="language-python">connection_string = &quot;ssh://bencretois:PASSWORD@nird.sigma2.no&quot;
+
+
+def doConnection(connection_string):
 
     myfs = fs.open_fs(connection_string)
     return myfs
+
+
+my_filesystem = doConnection(connection_string)
 </code></pre>
-<pre><code>def walk_audio(filesystem, input_path):
+<p>Now that the connection is established we can list the files in <code>/folder/my_data</code>:</p>
+<pre><code class="language-python">def walk_audio(filesystem, input_path):
     # Get all files in directory with os.walk
-    walker = filesystem.walk(input_path, filter=['*.wav', '*.flac', '*.mp3', '*.ogg', '*.m4a', '*.WAV', '*.MP3'])
+    walker = filesystem.walk(input_path, filter=['*.wav', '*.mp3'])
     for path, dirs, flist in walker:
         for f in flist:
             yield fs.path.combine(path, f.name)
+
+
+all_files = walk_audio(my_filesystem, &quot;/folder/my_data&quot;)
 </code></pre>
-<pre><code>def parseInputFiles(filesystem, input_path):
-
-    files = []
-
-    for index, audiofile in enumerate(walk_audio(filesystem, input_path)):
-        files.append(audiofile)
-            
-    print('Found {} files for training'.format(len(files)))
-
-    return files
-</code></pre>
+<p>Now that the object <code>all_files</code> has been created, it is possible to use the files locally.</p>
+<hr />
+<p><sup class="footnote-reference"><a href="#1">1</a></sup> Definition on <a href="https://www.techtarget.com/searchstorage/definition/file-system">Techtarget</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="templates"><a class="header" href="#templates">Templates</a></h1>
 <h2 id="3-running-scripts-on-sigma2"><a class="header" href="#3-running-scripts-on-sigma2">3. Running scripts on Sigma2</a></h2>
 <h3 id="31-anatomy-of-a-job-script"><a class="header" href="#31-anatomy-of-a-job-script">3.1. Anatomy of a job script</a></h3>
@@ -422,7 +542,14 @@ dusage v0.1.4
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="acknowlegments"><a class="header" href="#acknowlegments">Acknowlegments</a></h1>
 <p>This document would not have been possible without the inputs of Francesco Frassinelli, Kjetil Grun and Stig Clausen.</p>
-
+<div style="break-before: page; page-break-before: always;"></div><h1 id="list-of-acronyms"><a class="header" href="#list-of-acronyms">List of acronyms</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Acronym</th><th>Term</th><th>Description</th></tr></thead><tbody>
+<tr><td>GPU</td><td>Graphic Processing Unit</td><td>A specialized processor originally designed to accelerate graphics rendering. Used extensively in Machine Learning to train complex algorithms</td></tr>
+<tr><td>GUI</td><td>Graphical User Interface</td><td>Form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation</td></tr>
+<tr><td>ML</td><td>Machine learning</td><td>Use and development of computer systems that are able to learn and adapt without following explicit instructions</td></tr>
+<tr><td>DL</td><td>Deep learning</td><td>Part of the family of machine learning methods based on artificial neural networks with representation learning.</td></tr>
+</tbody></table>
+</div>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -440,6 +567,22 @@ dusage v0.1.4
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
@@ -462,7 +605,9 @@ dusage v0.1.4
 
         <script type="text/javascript">
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
 
