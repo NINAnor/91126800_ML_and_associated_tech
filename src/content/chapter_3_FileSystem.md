@@ -52,34 +52,4 @@ folder2
 
 
 
-```
-def doConnection(connection_string):
 
-    myfs = fs.open_fs(connection_string)
-    return myfs
-```
-
-
-
-```
-def walk_audio(filesystem, input_path):
-    # Get all files in directory with os.walk
-    walker = filesystem.walk(input_path, filter=['*.wav', '*.flac', '*.mp3', '*.ogg', '*.m4a', '*.WAV', '*.MP3'])
-    for path, dirs, flist in walker:
-        for f in flist:
-            yield fs.path.combine(path, f.name)
-```
-
-
-```
-def parseInputFiles(filesystem, input_path):
-
-    files = []
-
-    for index, audiofile in enumerate(walk_audio(filesystem, input_path)):
-        files.append(audiofile)
-            
-    print('Found {} files for training'.format(len(files)))
-
-    return files
-```

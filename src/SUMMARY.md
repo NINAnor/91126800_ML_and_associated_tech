@@ -15,6 +15,8 @@
     - [Copying files over to HPC clusters](content/chapter_3/1_copying.md)
     - [Using filesystem](content/chapter_3/2_filesystem.md)
 - [Chapter 4: Template](content/chapter_4_Templates.md)
+- [Chapter 5: Advanced topics](content/chapter_5/0_introduction.md)
+    - [Ray tune](content/chapter_5/1_ray_tune.md)
 - [Aknowledgments](content/acknowledgments.md)
 
 # Vocabulary
