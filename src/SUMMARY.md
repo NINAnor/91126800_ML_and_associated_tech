@@ -14,9 +14,13 @@
 - [Chapter 3: File management on HPC clusters](content/chapter_3/0_introduction.md)
     - [Copying files over to HPC clusters](content/chapter_3/1_copying.md)
     - [Using filesystem](content/chapter_3/2_filesystem.md)
-- [Chapter 4: Template](content/chapter_4_Templates.md)
+- [Chapter 4: Case study](content/chapter_4/0_introduction.md)
+    - [Setting up the environment](content/chapter_4/1_setup_env.md)
+    - [Training model locally](content/chapter_4/2_train_locally.md)
+    - [Training model on SIGMA2](content/chapter_4/3_train_sigma2.md)
 - [Chapter 5: Advanced topics](content/chapter_5/0_introduction.md)
-    - [Ray tune](content/chapter_5/1_ray_tune.md)
+    - [Parallelising the workflow](content/chapter_5/1_parallelising_workflow.md)
+    - [Ray tune](content/chapter_5/2_ray_tune.md)
 - [Aknowledgments](content/acknowledgments.md)
 
 # Vocabulary
@@ -26,3 +30,5 @@
 # Appendix
 
 - [Appendix A: list of referenced softwares & services]()
+
+

@@ -22,10 +22,10 @@ Which parameters are allowed or required depends the job type and cluster, but t
 
 Other parameters that you will use on HPCs such as `SAGA`, `Betzy` or `Fram` include:
 
-- **ntasks**: specifies the number of tasks to run on a node
-- **cpus-per-task**: allocate a specific number of CPUs to each task
+- **--ntasks**: specifies the number of tasks to run on a node
+- **c--pus-per-task**: allocate a specific number of CPUs to each task
 - **--mem-per-cpu**: allocate a specific amount of memory per CPU and per task
-- **--partition**: 
+- **--partition**: The nodes on a cluster is divided into sets, called partitions. Jobs are run in **partitions** that are specific to certain needs. For instance, if you want nodes with GPU you will have to specify `partition=accel`.
 
 And more rarely (if you have a very expensive task to run):
 
@@ -53,10 +53,10 @@ module load package
 For instance, if you want to load `Pytorch v. 1.4.0` with `python 3.7.4` use:
 
 ```
-PyTorch/1.4.0-fosscuda-2019b-Python-3.7.4
+module load PyTorch/1.4.0-fosscuda-2019b-Python-3.7.4
 ```
 
-## Example 1:
+## Example 1, basic headers:
 
 ```bash
 #SBATCH --account=nnXXX
@@ -68,6 +68,37 @@ PyTorch/1.4.0-fosscuda-2019b-Python-3.7.4
 ```
 
 This job will get 2 nodes, and run 4 processes (tasks) on each of them, each process is getting 10 cpus with 4GB of memory. The wall-time is 1 hours so each task will be able to compute for a maximum of 1 hour.
+
+
+## Example 2, train a cat / dog classifier:
+
+```bash
+#!/bin/bash
+
+#SBATCH --account=nnXX --job-name=cat_dog_model
+#SBATCH --partition=accel --gpus=1
+#SBATCH --time=24:00:00
+#SBATCH --mem-per-cpu=4G
+
+cd /cluster/projects/nnXX/
+
+# Load the modules
+module load Anaconda3/2020.11
+
+# Activate my environment
+conda activate myenv
+
+# Run the script
+python main_scripts/train_model.py \
+            --data_path data/kaggle_cats_dogs/train \
+            --save_path data/saved_models/model.pt \
+            --save_es data/saved_models/model_es.pt \
+            --batch_size 128 \
+            --lr 0.05 \
+            --num_epoch 10
+```
+
+This job will run on a **single node** located in the `accel` partition as we ask for a GPU and run a **single process** (training the deep learning model). The `cd` indicates that we move to the project folder (under which our data are stored in `data`). We activate the module `Anaconda` so we can load our virtual environment using `conda activate`. Once the virtual environment is activated we can finally run the main script for training the model.
 
 
 ## Example 3, a generic script:

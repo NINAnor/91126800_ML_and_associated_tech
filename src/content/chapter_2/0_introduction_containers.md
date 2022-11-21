@@ -8,10 +8,17 @@ To create and use *containers* the use of a *container platform* is necessary. *
 
 Since this document focus primarily on using HPC we will go through **Singularity** in more details.
 
+## Container vs virtual environments
+
+The key differences between virtual environments and containers are:
+
+- **A virtualenv only encapsulates Python dependencies**. A container (such as a docker or singularity container) encapsulates an entire OS.
+- **With a Python virtualenv**, you can easily switch between Python versions and dependencies, but **you're stuck with your host OS**.
+- **With a Docker image, you can swap out the entire OS** - install and run Python on Ubuntu, Debian, Alpine, even Windows Server Core.
+
 ## Docker
 
 Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud. 
-
 
 ## Singularity
 

@@ -4,6 +4,10 @@ This document is a guide to get started with High Performance Computer clusters 
 
 This document is the result of a Strategic Funding given by the [Norwegian Institute for Nature Research](https://www.nina.no/english/home) (NINA). Please note that the document is **not static** and constantly subject to improvement based on feedbacks. You can contribute to improving the document by opening issues on the [GitHub repository](https://github.com/NINAnor/91126800_ML_and_associated_tech) of this project.
 
+# Authors
+
+The document has been written by [Benjamin Cretois](https://www.nina.no/english/Contact/Employees/Employee-info?AnsattID=15849) with the help of [Francesco Frassinelli](https://www.nina.no/Kontakt/Ansatte/Ansattinformasjon.aspx?AnsattID=15958).
+
 
 
 

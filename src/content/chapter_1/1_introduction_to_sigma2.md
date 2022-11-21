@@ -16,7 +16,9 @@ After a successful application to an account on Sigma2 you will be given your **
 To access the HPC server you applied for (in our case it is `saga`). You can log in using the command `ssh` in **Windows PowerShell** or on a **linux terminal**: 
 
 ```bash
+
 $ ssh username@saga.sigma2.no
+
 ```
 
 The first time you log in, you will be asked to set your **password** which will have to be used at any subsequent connection to the HPC server.

@@ -4,6 +4,8 @@
 
 With the increased use of technologies like the Internet of Things (IoT), artificial intelligence (AI), and machine learning (ML), organizations are producing huge quantities of data, and they need to be able to process and use that data more quickly in real-time. To power the analysis of such large dataset it is often more practical / mandatory to make use of supercomputing. Supercomputing enables fast processing of data and training of complex algorithms such as neural networks for image and sound recognition.
 
+In Chapter 1 we explore the basics of HPC and we will learn more in depth about **UNINETT Sigma2**, a Norwegian infrastructure providing large scale computational resources.
+
 ## Basic vocabulary
 
 ### Cluster
@@ -40,8 +42,12 @@ D[headnode 2] --> E[Worker node 1]
 D --> F[Worker node 2]
 end
 
+H[Data] --> B
+H --> C
+H --> E
+H --> F
+
 end
-
-
-
 ```
+
+*Figure 1: Graph representing the structure of an HPC. The user first has to connect to the headnode of one of the HPC clusters through ssh (or any other protocols). The user can then submit a script (i.e. a job script) that is interpreted by the headnode. The headnode distribute the tasks accross the worker nodes. The worker nodes execute the script and if needed fetch the data necessary to complete the task*

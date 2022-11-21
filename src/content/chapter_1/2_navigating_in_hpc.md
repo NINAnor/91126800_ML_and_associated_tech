@@ -6,7 +6,7 @@ Communication between you and the HPC server is usually done through an interfac
 
 Here is how the bash looks like
 
-```
+```bash
 [bencretois@login-5.SAGA ~]$ 
 ```
 
@@ -21,7 +21,7 @@ Communicating with a bash requires learning a particular programming language, *
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~]$ cd deepexperiments/
 [bencretois@login-5.SAGA ~/deepexperiments]$
 ```
@@ -34,7 +34,7 @@ Communicating with a bash requires learning a particular programming language, *
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~/deepexperiments]$ cd ..
 [bencretois@login-5.SAGA ~]$
 ```
@@ -47,7 +47,7 @@ Communicating with a bash requires learning a particular programming language, *
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~/deepexperiments]$ ls
 
 bash_cheatsheet.md   Dockerfile             list_ignore.txt  poetry.lock     runs            sync.sh
@@ -63,7 +63,7 @@ deepexperiments.sif  jobs
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~]$ pwd
 /cluster/home/bencretois
 ```
@@ -77,7 +77,7 @@ deepexperiments.sif  jobs
 
 **Output:**
  
-```
+```bash
 [bencretois@login-5.SAGA ~]$ mkdir new_folder
 [bencretois@login-5.SAGA ~]$ ls
 deepexperiments new_folder
@@ -101,7 +101,7 @@ There are also some useful commands specific to your Sigma2 account:
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~]$ projects
 nn5019k
 ```
@@ -114,7 +114,7 @@ nn5019k
 
 **Output:**
 
-```
+```bash
 [bencretois@login-5.SAGA ~]$ dusage
 
 dusage v0.1.4
