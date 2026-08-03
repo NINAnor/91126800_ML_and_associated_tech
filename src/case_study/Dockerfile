@@ -1,18 +1,17 @@
-FROM python:3.8
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-ARG DEBIAN_FRONTEND=noninteractive
-RUN \
-    apt-get update && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install poetry 
+ENV UV_LINK_MODE=copy
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock ./
 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-root
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 
-COPY . ./
+ADD . /app
 
-ENV PYTHONPATH "${PYTHONPATH}:/app/"
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+
+ENV PYTHONPATH="/app"

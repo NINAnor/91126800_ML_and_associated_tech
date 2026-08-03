@@ -27,12 +27,12 @@ The `exec` command allows you to execute a custom command within a container by 
 ```
 singularity exec \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 ```
 
 ## Specifying bind paths
 
-If the data we want to process / use to train a machine learning model are stored in a different folder (for instance our `.sif` file is in `cluster/projects/nn8055k` but the data is in `cluster/projects/nn8054k`) we need to expose `cluster/projects/nn8054k` or in other words, make it available to the container. The flag `--bind` fill that purpose. 
+If the data we want to process / use to train a machine learning model are stored in a different folder (for instance our `.sif` file is in `cluster/projects/nn8055k` but the data is in `cluster/projects/nn8054k`) we need to expose `cluster/projects/nn8054k` or in other words, make it available to the container. The flag `--bind` fill that purpose.
 
 We would run the container as follow:
 
@@ -40,7 +40,7 @@ We would run the container as follow:
 singularity exec \
                 --bind /cluster/projects/nn8054k \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 ```
 
 ## Exposing GPUs
@@ -51,5 +51,5 @@ When training or using a machine learning model it will usually be preferable to
 singularity exec \
                 --nv \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 ```

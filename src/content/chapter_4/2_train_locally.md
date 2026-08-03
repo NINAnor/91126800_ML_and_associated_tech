@@ -1,10 +1,10 @@
 # Training model locally
 
-First of all, we should try to make sure that our scripts work well on the VDI before spending computational resources on SIGMA2. To develop and improve our scripts we can leverage the power of `Docker` by using the created image in two ways. 
+First of all, we should try to make sure that our scripts work well on the VDI before spending computational resources on SIGMA2. To develop and improve our scripts we can leverage the power of `Docker` by using the created image in two ways.
 
 First, we can start a `Jupyter` instance inside the docker container so you can develop in a more interactive environments while having all the python libraries you need. For this you can use the script `docker_start_jupyter` in `ml-sats/bash_utils`.
 
-The script 
+The script
 
 ```
 #!/bin/bash
@@ -14,12 +14,11 @@ cd ~/Code/deepexperiments
 docker run \
     -p 8889:8889 \
     --rm -it \
-    -v $PWD:/app \
     -v $HOME/Data:/Data \
     case_study_1:latest \
-    poetry run jupyter lab \
+    uv run --with jupyterlab jupyter lab \
     --port=8889 --no-browser --ip=0.0.0.0 --allow-root
-~                                                        
+~
 ```
 
 You can also use the docker image to run the training script on any computers using the script `case_study_1/bash_scripts/train_model.sh`. Note that you need to change the folders that are exposed (for the meaning of exposed folder refer to the document XXX)
@@ -37,8 +36,8 @@ cd $HOME/Code/case_study_1
 DATA_PATH=/Data/train
 OUT_DIR=/Data/
 
-docker run --rm -v $HOME/Data:/Data -v $PWD:/app case_study_1:latest \
-    python -u /app/main_scripts/train_model.py \
+docker run --rm -v $HOME/Data:/Data case_study_1:latest \
+    uv run python -u /app/training_scripts/train_model.py \
                 --data_path $DATA_PATH \
                 --save_path $OUT_DIR/model.pt \
                 --save_es $OUT_DIR/model.pt \
@@ -50,7 +49,7 @@ docker run --rm -v $HOME/Data:/Data -v $PWD:/app case_study_1:latest \
 We are finally ready to train the model. Since this is a test and the main model will be trained on SIGMA2 we run the model only for a few epoch to be sure the code does not contain any bug. Running the script (`./bash_scripts/train_model.sh`) should output the following:
 
 ```
-benjamin.cretois@nixml086424q01:~/Code/ml-sats/case_study_1$ ./bash_scripts/train_model.sh 
+benjamin.cretois@nixml086424q01:~/Code/ml-sats/case_study_1$ ./bash_scripts/train_model.sh
 ./bash_scripts/train_model.sh: line 3: cd: /home/benjamin.cretois/Code/case_study_1: No such file or directory
 /usr/local/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
   return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
