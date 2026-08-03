@@ -20,7 +20,7 @@ C --> G[myscript.py]
 
 A filesystem abstraction allows you to work with files and directories in archives, memory, the cloud etc. as easily as your local drive. **It makes your code agnostic to where the data is stored**.
 
-**[Pyfilesystem](https://www.pyfilesystem.org/)** is a filesystem abstraction **for Python**. This means that in your python code you can fully replace the use of `os` with **Pyfilesystem**. 
+**[Pyfilesystem](https://www.pyfilesystem.org/)** is a filesystem abstraction **for Python**. This means that in your python code you can fully replace the use of `os` with **Pyfilesystem**.
 
 Suppose the data is stored on `NIRD` in the project folder `/folder/my_data` but I want to process the data on `SAGA` to benefit from optimal computational resources. To access the data on `NIRD` I would make the following change to my code:
 
@@ -58,6 +58,6 @@ all_files = walk_audio(my_filesystem, "/folder/my_data")
 Now that the object `all_files` has been created, it is possible to use the files locally.
 
 
---- 
+---
 
 [^1] Definition on [Techtarget](https://www.techtarget.com/searchstorage/definition/file-system)

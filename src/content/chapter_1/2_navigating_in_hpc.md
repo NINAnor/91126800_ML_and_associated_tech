@@ -7,7 +7,7 @@ Communication between you and the HPC server is usually done through an interfac
 Here is how the bash looks like
 
 ```bash
-[bencretois@login-5.SAGA ~]$ 
+[bencretois@login-5.SAGA ~]$
 ```
 
 Communicating with a bash requires learning a particular programming language, **bash scripting**. Below we provide a list of selected commands that will allow you to navigate in HPC server:
@@ -17,7 +17,7 @@ Communicating with a bash requires learning a particular programming language, *
 
 **Command:**
 
-* `cd + path to the directory` 
+* `cd + path to the directory`
 
 **Output:**
 
@@ -43,7 +43,7 @@ Communicating with a bash requires learning a particular programming language, *
 
 **Command:**
 
-* `ls` + name of a directory - Note that `ls` by default list the files of your current directory 
+* `ls` + name of a directory - Note that `ls` by default list the files of your current directory
 
 **Output:**
 
@@ -59,7 +59,7 @@ deepexperiments.sif  jobs
 
 **Command:**
 
-* `pwd` 
+* `pwd`
 
 **Output:**
 
@@ -76,7 +76,7 @@ deepexperiments.sif  jobs
 * `mkdir` + name of the folder you want to create
 
 **Output:**
- 
+
 ```bash
 [bencretois@login-5.SAGA ~]$ mkdir new_folder
 [bencretois@login-5.SAGA ~]$ ls
@@ -110,7 +110,7 @@ nn5019k
 
 **Command:**
 
-`dusage` -> . Note that **space used** is what you are currently using and **quota** is the limit. 
+`dusage` -> . Note that **space used** is what you are currently using and **quota** is the limit.
 
 **Output:**
 

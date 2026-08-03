@@ -18,13 +18,13 @@ The key differences between virtual environments and containers are:
 
 ## Docker
 
-Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud. 
+Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud.
 
 ## Singularity
 
 Singularity was created to **run complex applications on HPC clusters** in a simple, portable, and reproducible way. First developed at **Lawrence Berkeley National Laboratory**, it quickly became popular at other HPC sites, academic sites, and beyond. Singularity is an open-source project, with a friendly community of developers and users. The user base continues to expand, with Singularity now used across industry and academia in many areas of work.
 
-## Images 
+## Images
 
 ### Image versus container
 
@@ -57,4 +57,3 @@ The Registry is a stateless, highly scalable server side application that stores
 [^1]: Definition from [docker.com](https://www.docker.com/resources/what-container/)
 
 [^2]: Definition from [techtarget.com](https://www.techtarget.com/searchitoperations/definition/Docker-image)
-

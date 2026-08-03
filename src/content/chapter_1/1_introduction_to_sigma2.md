@@ -1,6 +1,6 @@
 # What is Uninett Sigma2?
 
-Sigma2 is a **non-profit** company that provides services for high-performance computing and data storage to individuals and groups involved in research and education at all Norwegian universities and colleges, and other publicly funded organizations and projects (such as NINA). Their activities are financed by the **Research Council of Norway (RCN)** and the **Sigma2 consortium partners**, which are the universities in Oslo, Bergen, Trondheim and Tromsø. This collaboration goes by the name **NRIS – Norwegian research infrastructure services**. 
+Sigma2 is a **non-profit** company that provides services for high-performance computing and data storage to individuals and groups involved in research and education at all Norwegian universities and colleges, and other publicly funded organizations and projects (such as NINA). Their activities are financed by the **Research Council of Norway (RCN)** and the **Sigma2 consortium partners**, which are the universities in Oslo, Bergen, Trondheim and Tromsø. This collaboration goes by the name **NRIS – Norwegian research infrastructure services**.
 
 Sigma2 owns **four High Performance Computing (HPC) servers** that have different configurations: `Betsy`, `Saga`, `Fram` and `LUMI`. Generally, if a project requires access to one or more **Graphics processing units** (GPUs) it is reasonable to apply for an access to `Saga`.
 
@@ -13,7 +13,7 @@ For help regarding the application process contact [Benjamin Cretois](mailto:ben
 
 After a successful application to an account on Sigma2 you will be given your **username** and will be able to log on the HPC terminal.
 
-To access the HPC server you applied for (in our case it is `saga`). You can log in using the command `ssh` in **Windows PowerShell** or on a **linux terminal**: 
+To access the HPC server you applied for (in our case it is `saga`). You can log in using the command `ssh` in **Windows PowerShell** or on a **linux terminal**:
 
 ```bash
 

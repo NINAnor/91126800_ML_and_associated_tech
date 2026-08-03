@@ -18,13 +18,13 @@ $ scp -r template bencretois@saga.sigma2.no:/cluter/projects/nn8055k
 
 ## `rsync`: Synchronizing a local repository with a remote repository
 
-Instead of copying all files from your local to remote folder you can synchronze the two folders with `rsync`. Synchronizing has the advantage of being more flexible than `scp` and has some optimisations to make the transfer of files faster. Moreoever `rsync` has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. 
+Instead of copying all files from your local to remote folder you can synchronze the two folders with `rsync`. Synchronizing has the advantage of being more flexible than `scp` and has some optimisations to make the transfer of files faster. Moreoever `rsync` has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc.
 
 ```
 $ rsync -e ssh -avz ./local_repo user@server:/remote_repo
 ```
 
-`-a` is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings. 
+`-a` is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings.
 
 `-v` being the verbose option and prints the progress and status of the rsync command.
 

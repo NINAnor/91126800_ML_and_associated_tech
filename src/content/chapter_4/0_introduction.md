@@ -2,13 +2,13 @@
 
 In this section we will demonstrate how to train a cat and dog classifier using supercomputers and in particular SIGMA2.
 
-## Data 
+## Data
 
-The case study is entirely reproducible and you can run it yourself provided you have an account on SIGMA2. 
+The case study is entirely reproducible and you can run it yourself provided you have an account on SIGMA2.
 
-The data to run this case study can be found on [Kaggle](https://www.kaggle.com/competitions/dogs-vs-cats/data?select=train.zip), a subsidiary of Google that allow users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges. The training dataset is composed of 25,000 images of dogs and cats and weight approximatively about 500MB.a 
+The data to run this case study can be found on [Kaggle](https://www.kaggle.com/competitions/dogs-vs-cats/data?select=train.zip), a subsidiary of Google that allow users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges. The training dataset is composed of 25,000 images of dogs and cats and weight approximatively about 500MB.a
 
-## Code 
+## Code
 
 All the scripts are found in the GitHub repository of this book, under `case_study`. The folder contains three subfolders:
 
