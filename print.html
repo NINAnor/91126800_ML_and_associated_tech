@@ -1,46 +1,66 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Documentation on using HPC and containers for Machine Learning</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-e96d0476.css">
+        <link rel="stylesheet" href="css/chrome-d279d366.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
+
         <!-- MathJax -->
-        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-ccd335e3.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-fa5881f6.js"></script>
     </head>
     <body>
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
-        </script>
-
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -53,57 +73,70 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
-            var theme;
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
-            html.classList.remove('no-js')
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            html.classList.add("js");
         </script>
 
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
         </script>
 
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Preliminary comments</a></li><li class="chapter-item expanded affix "><li class="part-title">Core book</li><li class="chapter-item expanded "><a href="content/chapter_1/0_introduction_to_hpc.html"><strong aria-hidden="true">1.</strong> Chapter 1: High Performance Computing (HPC)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_1/1_introduction_to_sigma2.html"><strong aria-hidden="true">1.1.</strong> Introduction to Uninett Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/2_navigating_in_hpc.html"><strong aria-hidden="true">1.2.</strong> Navigating in Sigma2</a></li><li class="chapter-item expanded "><a href="content/chapter_1/3_job_script.html"><strong aria-hidden="true">1.3.</strong> Job scripts</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_2/0_introduction_containers.html"><strong aria-hidden="true">2.</strong> Chapter 2: Containers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_2/1_singularity.html"><strong aria-hidden="true">2.1.</strong> Walk through Singularity</a></li><li class="chapter-item expanded "><a href="content/chapter_2/2_using_singularity.html"><strong aria-hidden="true">2.2.</strong> Using Singularity</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_3/0_introduction.html"><strong aria-hidden="true">3.</strong> Chapter 3: File management on HPC clusters</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_3/1_copying.html"><strong aria-hidden="true">3.1.</strong> Copying files over to HPC clusters</a></li><li class="chapter-item expanded "><a href="content/chapter_3/2_filesystem.html"><strong aria-hidden="true">3.2.</strong> Using filesystem</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_4/0_introduction.html"><strong aria-hidden="true">4.</strong> Chapter 4: Case study</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_4/1_setup_env.html"><strong aria-hidden="true">4.1.</strong> Setting up the environment</a></li><li class="chapter-item expanded "><a href="content/chapter_4/2_train_locally.html"><strong aria-hidden="true">4.2.</strong> Training model locally</a></li><li class="chapter-item expanded "><a href="content/chapter_4/3_train_sigma2.html"><strong aria-hidden="true">4.3.</strong> Training model on SIGMA2</a></li></ol></li><li class="chapter-item expanded "><a href="content/chapter_5/0_introduction.html"><strong aria-hidden="true">5.</strong> Chapter 5: Advanced topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="content/chapter_5/1_parallelising_workflow.html"><strong aria-hidden="true">5.1.</strong> Parallelising the workflow</a></li><li class="chapter-item expanded "><a href="content/chapter_5/2_ray_tune.html"><strong aria-hidden="true">5.2.</strong> Ray tune</a></li></ol></li><li class="chapter-item expanded "><a href="content/acknowledgments.html"><strong aria-hidden="true">6.</strong> Aknowledgments</a></li><li class="chapter-item expanded affix "><li class="part-title">Vocabulary</li><li class="chapter-item expanded "><a href="content/Acronyms.html"><strong aria-hidden="true">7.</strong> List of acronyns</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Appendix A: list of referenced softwares & services</div></li></ol>
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
-        <div id="page-wrapper" class="page-wrapper">
+        <div id="mdbook-page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                            <i class="fa fa-bars"></i>
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
                         </button>
-                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                            <i class="fa fa-paint-brush"></i>
-                        </button>
-                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
                         </ul>
-                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                            <i class="fa fa-search"></i>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
                         </button>
                     </div>
 
@@ -111,42 +144,50 @@
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
                         <a href="https://github.com/NINAnor/91126800_ML_and_associated_tech" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
                         </a>
+
                     </div>
                 </div>
 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
                     </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
                         link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
                     });
                 </script>
 
-                <div id="content" class="content">
+                <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>This document is a guide to get started with High Performance Computer clusters (HPCC) and more particularly <a href="https://www.sigma2.no/high-performance-computing">Uninett Sigma2's HPCC</a>. This guide aims at understanding the basic commands for navigating in the terminal of an HPCC, at helping running a <strong>job script</strong> and at managing files such as copying files from your local directory to the HPCC and using files that are stored remotely.</p>
+<p>This document is a guide to get started with High Performance Computer clusters (HPCC) and more particularly <a href="https://www.sigma2.no/high-performance-computing">Uninett Sigma2’s HPCC</a>. This guide aims at understanding the basic commands for navigating in the terminal of an HPCC, at helping running a <strong>job script</strong> and at managing files such as copying files from your local directory to the HPCC and using files that are stored remotely.</p>
 <p>This document is the result of a Strategic Funding given by the <a href="https://www.nina.no/english/home">Norwegian Institute for Nature Research</a> (NINA). Please note that the document is <strong>not static</strong> and constantly subject to improvement based on feedbacks. You can contribute to improving the document by opening issues on the <a href="https://github.com/NINAnor/91126800_ML_and_associated_tech">GitHub repository</a> of this project.</p>
 <h1 id="authors"><a class="header" href="#authors">Authors</a></h1>
 <p>The document has been written by <a href="https://www.nina.no/english/Contact/Employees/Employee-info?AnsattID=15849">Benjamin Cretois</a> with the help of <a href="https://www.nina.no/Kontakt/Ansatte/Ansattinformasjon.aspx?AnsattID=15958">Francesco Frassinelli</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-hpc-and-why-using-it"><a class="header" href="#what-is-hpc-and-why-using-it">What is HPC and why using it?</a></h1>
-<p><strong>High performance computing</strong> (HPC) generally refers to processing complex calculations at high speeds across multiple servers in parallel. Those groups of servers are known as clusters and are composed of <strong>hundreds or even thousands of compute servers</strong> that have been connected through a network. </p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="what-is-hpc-and-why-using-it"><a class="header" href="#what-is-hpc-and-why-using-it">What is HPC and why using it?</a></h1>
+<p><strong>High performance computing</strong> (HPC) generally refers to processing complex calculations at high speeds across multiple servers in parallel. Those groups of servers are known as clusters and are composed of <strong>hundreds or even thousands of compute servers</strong> that have been connected through a network.</p>
 <p>With the increased use of technologies like the Internet of Things (IoT), artificial intelligence (AI), and machine learning (ML), organizations are producing huge quantities of data, and they need to be able to process and use that data more quickly in real-time. To power the analysis of such large dataset it is often more practical / mandatory to make use of supercomputing. Supercomputing enables fast processing of data and training of complex algorithms such as neural networks for image and sound recognition.</p>
 <p>In Chapter 1 we explore the basics of HPC and we will learn more in depth about <strong>UNINETT Sigma2</strong>, a Norwegian infrastructure providing large scale computational resources.</p>
 <h2 id="basic-vocabulary"><a class="header" href="#basic-vocabulary">Basic vocabulary</a></h2>
@@ -162,7 +203,7 @@
 </ul>
 <p><strong>All cluster nodes have the same components as a laptop or desktop</strong>: CPU cores, memory and disk space. The difference between personal computer and a cluster node is in <strong>quantity, quality and power of the components</strong>.</p>
 <h3 id="synthesis"><a class="header" href="#synthesis">Synthesis</a></h3>
-<pre><code class="language-mermaid">graph TB;
+<pre class="mermaid">graph TB;
 
 G[User] --&gt; |ssh| A
 
@@ -184,32 +225,35 @@ H --&gt; E
 H --&gt; F
 
 end
-</code></pre>
+</pre>
+
 <p><em>Figure 1: Graph representing the structure of an HPC. The user first has to connect to the headnode of one of the HPC clusters through ssh (or any other protocols). The user can then submit a script (i.e. a job script) that is interpreted by the headnode. The headnode distribute the tasks accross the worker nodes. The worker nodes execute the script and if needed fetch the data necessary to complete the task</em></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-uninett-sigma2"><a class="header" href="#what-is-uninett-sigma2">What is Uninett Sigma2?</a></h1>
-<p>Sigma2 is a <strong>non-profit</strong> company that provides services for high-performance computing and data storage to individuals and groups involved in research and education at all Norwegian universities and colleges, and other publicly funded organizations and projects (such as NINA). Their activities are financed by the <strong>Research Council of Norway (RCN)</strong> and the <strong>Sigma2 consortium partners</strong>, which are the universities in Oslo, Bergen, Trondheim and Tromsø. This collaboration goes by the name <strong>NRIS – Norwegian research infrastructure services</strong>. </p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="what-is-uninett-sigma2"><a class="header" href="#what-is-uninett-sigma2">What is Uninett Sigma2?</a></h1>
+<p>Sigma2 is a <strong>non-profit</strong> company that provides services for high-performance computing and data storage to individuals and groups involved in research and education at all Norwegian universities and colleges, and other publicly funded organizations and projects (such as NINA). Their activities are financed by the <strong>Research Council of Norway (RCN)</strong> and the <strong>Sigma2 consortium partners</strong>, which are the universities in Oslo, Bergen, Trondheim and Tromsø. This collaboration goes by the name <strong>NRIS – Norwegian research infrastructure services</strong>.</p>
 <p>Sigma2 owns <strong>four High Performance Computing (HPC) servers</strong> that have different configurations: <code>Betsy</code>, <code>Saga</code>, <code>Fram</code> and <code>LUMI</code>. Generally, if a project requires access to one or more <strong>Graphics processing units</strong> (GPUs) it is reasonable to apply for an access to <code>Saga</code>.</p>
 <p>To apply for access to one of Sigma2 HPC please refer to <a href="https://www.sigma2.no/apply-e-infrastructure-resources">this page</a>. You will need to fill out a form describing your project, your experience with HPC and your computational needs (amount of CPU / GPU memory and storage your project will need).</p>
 <p>For help regarding the application process contact <a href="mailto:benjamin.cretois@nina.no">Benjamin Cretois</a>, <a href="mailto:kjetil.grun@nina.no">Kjetil Grun</a> or <a href="mailto:francesco.frassinelli@nina.no">Francesco Frassinelli</a>.</p>
 <h1 id="getting-started-with-sigma2"><a class="header" href="#getting-started-with-sigma2">Getting started with Sigma2</a></h1>
 <p>After a successful application to an account on Sigma2 you will be given your <strong>username</strong> and will be able to log on the HPC terminal.</p>
-<p>To access the HPC server you applied for (in our case it is <code>saga</code>). You can log in using the command <code>ssh</code> in <strong>Windows PowerShell</strong> or on a <strong>linux terminal</strong>: </p>
+<p>To access the HPC server you applied for (in our case it is <code>saga</code>). You can log in using the command <code>ssh</code> in <strong>Windows PowerShell</strong> or on a <strong>linux terminal</strong>:</p>
 <pre><code class="language-bash">
 $ ssh username@saga.sigma2.no
 
 </code></pre>
 <p>The first time you log in, you will be asked to set your <strong>password</strong> which will have to be used at any subsequent connection to the HPC server.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="navigating-in-sigma2s-hpc-server"><a class="header" href="#navigating-in-sigma2s-hpc-server">Navigating in Sigma2's HPC server</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="navigating-in-sigma2s-hpc-server"><a class="header" href="#navigating-in-sigma2s-hpc-server">Navigating in Sigma2’s HPC server</a></h1>
 <h2 id="basic-bash-commands"><a class="header" href="#basic-bash-commands">Basic bash commands</a></h2>
 <p>Communication between you and the HPC server is usually done through an interface named a <code>bash</code> and no <strong>Graphical User Interface (GUI)</strong> is provided</p>
 <p>Here is how the bash looks like</p>
-<pre><code class="language-bash">[bencretois@login-5.SAGA ~]$ 
+<pre><code class="language-bash">[bencretois@login-5.SAGA ~]$
 </code></pre>
 <p>Communicating with a bash requires learning a particular programming language, <strong>bash scripting</strong>. Below we provide a list of selected commands that will allow you to navigate in HPC server:</p>
 <h3 id="change-directory"><a class="header" href="#change-directory">Change directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
-<li><code>cd + path to the directory</code> </li>
+<li><code>cd + path to the directory</code></li>
 </ul>
 <p><strong>Output:</strong></p>
 <pre><code class="language-bash">[bencretois@login-5.SAGA ~]$ cd deepexperiments/
@@ -227,7 +271,7 @@ $ ssh username@saga.sigma2.no
 <h3 id="list-the-content-of-a-directory"><a class="header" href="#list-the-content-of-a-directory">List the content of a directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
-<li><code>ls</code> + name of a directory - Note that <code>ls</code> by default list the files of your current directory </li>
+<li><code>ls</code> + name of a directory - Note that <code>ls</code> by default list the files of your current directory</li>
 </ul>
 <p><strong>Output:</strong></p>
 <pre><code class="language-bash">[bencretois@login-5.SAGA ~/deepexperiments]$ ls
@@ -239,7 +283,7 @@ deepexperiments.sif  jobs
 <h3 id="get-the-path-of-your-current-directory"><a class="header" href="#get-the-path-of-your-current-directory">get the path of your current directory</a></h3>
 <p><strong>Command:</strong></p>
 <ul>
-<li><code>pwd</code> </li>
+<li><code>pwd</code></li>
 </ul>
 <p><strong>Output:</strong></p>
 <pre><code class="language-bash">[bencretois@login-5.SAGA ~]$ pwd
@@ -257,7 +301,7 @@ deepexperiments new_folder
 </code></pre>
 <h3 id="learning-more-bash-commands"><a class="header" href="#learning-more-bash-commands">Learning more bash commands</a></h3>
 <p><em>Bash command</em>* are very well documented on Internet and if you wish to learn more you can begin <a href="https://www.educative.io/blog/bash-shell-command-cheat-sheet">here</a>.</p>
-<h2 id="bash-commands-specific-to-sigma2s-hpc"><a class="header" href="#bash-commands-specific-to-sigma2s-hpc">Bash commands specific to Sigma2's HPC</a></h2>
+<h2 id="bash-commands-specific-to-sigma2s-hpc"><a class="header" href="#bash-commands-specific-to-sigma2s-hpc">Bash commands specific to Sigma2’s HPC</a></h2>
 <p>There are also some useful commands specific to your Sigma2 account:</p>
 <h3 id="list-your-projects"><a class="header" href="#list-your-projects">List your projects</a></h3>
 <p><strong>Command:</strong></p>
@@ -268,7 +312,7 @@ nn5019k
 </code></pre>
 <h3 id="look-at-used-space-and-allocated-quota-for-your-projects"><a class="header" href="#look-at-used-space-and-allocated-quota-for-your-projects">Look at used space and allocated quota for your projects</a></h3>
 <p><strong>Command:</strong></p>
-<p><code>dusage</code> -&gt; . Note that <strong>space used</strong> is what you are currently using and <strong>quota</strong> is the limit. </p>
+<p><code>dusage</code> -&gt; . Note that <strong>space used</strong> is what you are currently using and <strong>quota</strong> is the limit.</p>
 <p><strong>Output:</strong></p>
 <pre><code class="language-bash">[bencretois@login-5.SAGA ~]$ dusage
 
@@ -281,7 +325,8 @@ dusage v0.1.4
      /cluster/projects/nn5019k       yes     938.2 MiB   1.0 TiB   37 508  1 000 000
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="job-script-basics"><a class="header" href="#job-script-basics">Job script basics</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="job-script-basics"><a class="header" href="#job-script-basics">Job script basics</a></h1>
 <p>To run a job on the cluster involves creating a shell script called a <strong>job script</strong>. The job script is a plain-text file containing any number of commands, including your main computational task.</p>
 <h2 id="anatomy-of-a-job-script"><a class="header" href="#anatomy-of-a-job-script">Anatomy of a job script</a></h2>
 <p>A job script consists of a couple of parts, in this order:</p>
@@ -295,24 +340,24 @@ dusage v0.1.4
 <h3 id="sbatch-parameters"><a class="header" href="#sbatch-parameters">SBATCH parameters</a></h3>
 <p>Which parameters are allowed or required depends the job type and cluster, but two parameters must be present in (almost) any job:</p>
 <ul>
-<li><strong>--account</strong>: specifies the project the job will run in. Required by all jobs.</li>
-<li><strong>--time</strong>: specifies how long a job should be allowed to run. If it has not finished within that time, it will be cancelled.</li>
+<li><strong>–account</strong>: specifies the project the job will run in. Required by all jobs.</li>
+<li><strong>–time</strong>: specifies how long a job should be allowed to run. If it has not finished within that time, it will be cancelled.</li>
 </ul>
 <p>Other parameters that you will use on HPCs such as <code>SAGA</code>, <code>Betzy</code> or <code>Fram</code> include:</p>
 <ul>
-<li><strong>--ntasks</strong>: specifies the number of tasks to run on a node</li>
-<li><strong>c--pus-per-task</strong>: allocate a specific number of CPUs to each task</li>
-<li><strong>--mem-per-cpu</strong>: allocate a specific amount of memory per CPU and per task</li>
-<li><strong>--partition</strong>: The nodes on a cluster is divided into sets, called partitions. Jobs are run in <strong>partitions</strong> that are specific to certain needs. For instance, if you want nodes with GPU you will have to specify <code>partition=accel</code>.</li>
+<li><strong>–ntasks</strong>: specifies the number of tasks to run on a node</li>
+<li><strong>c–pus-per-task</strong>: allocate a specific number of CPUs to each task</li>
+<li><strong>–mem-per-cpu</strong>: allocate a specific amount of memory per CPU and per task</li>
+<li><strong>–partition</strong>: The nodes on a cluster is divided into sets, called partitions. Jobs are run in <strong>partitions</strong> that are specific to certain needs. For instance, if you want nodes with GPU you will have to specify <code>partition=accel</code>.</li>
 </ul>
 <p>And more rarely (if you have a very expensive task to run):</p>
 <ul>
-<li><strong>--nodes</strong>: number of nodes required</li>
-<li><strong>--ntasks-per-node</strong>: number of processes or tasks to run on a single node</li>
+<li><strong>–nodes</strong>: number of nodes required</li>
+<li><strong>–ntasks-per-node</strong>: number of processes or tasks to run on a single node</li>
 </ul>
 <h3 id="module-load"><a class="header" href="#module-load">Module load</a></h3>
 <p>The <strong>module system</strong> is a concept available on most supercomputers, simplifying the use of different software (versions) in a precise and controlled manner. In most cases, an HPC has far more software installed than the average user will ever use and it would not been computationally efficient to have them loaded by default.</p>
-<p>Note that with the use of container, you do not need the module system as all the different softwares should be built in your image. See <a href="content/chapter_1/./chapter_2/0_introduction_containers.html">Chapter 2</a>.</p>
+<p>Note that with the use of container, you do not need the module system as all the different softwares should be built in your image. See <a href="content/chapter_1/chapter_2/0_introduction_containers.html">Chapter 2</a>.</p>
 <p>To get a list of available packages you can use:</p>
 <pre><code>module avail
 </code></pre>
@@ -387,8 +432,9 @@ YourCommands
 
 
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="container-technology"><a class="header" href="#container-technology">Container technology</a></h1>
-<p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="container-technology"><a class="header" href="#container-technology">Container technology</a></h1>
+<p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. <sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></p>
 <p>Containers are a solution to the problem of how to get software to run reliably when moved from one computing environment to another. For example, containers can be used to export the training of a ML model from your local machine to a HPC server without the strain of installing all the dependancies necessary to run the training. Think of a container as a shipping container for software — it holds important content like files and programs so that an application can be delivered efficiently from producer to consumer.</p>
 <p>To create and use <em>containers</em> the use of a <em>container platform</em> is necessary. <strong>Docker</strong> is the most popular but others exist such as <a href="https://podman.io/">podman</a>. On the other hand, <strong>Docker</strong> and similar have some limitations which makes it difficult to use on HPC clusters and more powerful platform such as <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">Singularity</a> are necessary.</p>
 <p>Since this document focus primarily on using HPC we will go through <strong>Singularity</strong> in more details.</p>
@@ -396,38 +442,43 @@ YourCommands
 <p>The key differences between virtual environments and containers are:</p>
 <ul>
 <li><strong>A virtualenv only encapsulates Python dependencies</strong>. A container (such as a docker or singularity container) encapsulates an entire OS.</li>
-<li><strong>With a Python virtualenv</strong>, you can easily switch between Python versions and dependencies, but <strong>you're stuck with your host OS</strong>.</li>
+<li><strong>With a Python virtualenv</strong>, you can easily switch between Python versions and dependencies, but <strong>you’re stuck with your host OS</strong>.</li>
 <li><strong>With a Docker image, you can swap out the entire OS</strong> - install and run Python on Ubuntu, Debian, Alpine, even Windows Server Core.</li>
 </ul>
 <h2 id="docker"><a class="header" href="#docker">Docker</a></h2>
-<p>Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud. </p>
+<p>Docker, a subset of the Moby project, is a software framework for building, running, and managing containers on servers and the cloud.</p>
 <h2 id="singularity"><a class="header" href="#singularity">Singularity</a></h2>
 <p>Singularity was created to <strong>run complex applications on HPC clusters</strong> in a simple, portable, and reproducible way. First developed at <strong>Lawrence Berkeley National Laboratory</strong>, it quickly became popular at other HPC sites, academic sites, and beyond. Singularity is an open-source project, with a friendly community of developers and users. The user base continues to expand, with Singularity now used across industry and academia in many areas of work.</p>
 <h2 id="images"><a class="header" href="#images">Images</a></h2>
 <h3 id="image-versus-container"><a class="header" href="#image-versus-container">Image versus container</a></h3>
 <p>A container is a <strong>virtualized runtime environment used in application development</strong>. It is used to create, run and deploy applications that are isolated from the underlying hardware. A container can use one machine, share its kernel and virtualize the OS to run more isolated processes. As a result, containers are lightweight.</p>
-<p>An image is <strong>like a snapshot in other types of VM environments</strong>. It is a record of a Docker container at a specific point in time. Docker images are also immutable. While they can't be changed, they can be duplicated, shared or deleted. The feature is useful for testing new software or configurations because whatever happens, the image remains unchanged.</p>
-<p><strong>Containers need a runnable image to exist</strong>. Containers are dependent on images, because they are used to construct runtime environments and are needed to run an application. <sup class="footnote-reference"><a href="#2">2</a></sup></p>
-<pre><code class="language-mermaid">
+<p>An image is <strong>like a snapshot in other types of VM environments</strong>. It is a record of a Docker container at a specific point in time. Docker images are also immutable. While they can’t be changed, they can be duplicated, shared or deleted. The feature is useful for testing new software or configurations because whatever happens, the image remains unchanged.</p>
+<p><strong>Containers need a runnable image to exist</strong>. Containers are dependent on images, because they are used to construct runtime environments and are needed to run an application. <sup class="footnote-reference" id="fr-2-1"><a href="#footnote-2">2</a></sup></p>
+<pre class="mermaid">
 graph LR;
 
 A[Image] --&gt; B[Container A]
 A[Image] --&gt; C[Container B]
 A[Image] --&gt; D[Container C]
 
-</code></pre>
+</pre>
+
 <p><em>Figure X: The image is a single file with all the dependancies and configurations to run a program. Containers are instances of an image.</em></p>
 <h3 id="image-registry"><a class="header" href="#image-registry">Image registry</a></h3>
 <p>The Registry is a stateless, highly scalable server side application that stores and lets you <strong>distribute Docker images</strong>. Registries can be private, for instance some institutes or companies have internal registries to share images amongst teams but it is also possible to share images on <strong>public</strong> registries such as <a href="https://hub.docker.com/">Docker Hub</a>, <a href="https://docs.gitlab.com/ee/user/packages/container_registry/">GitLab registry</a> or the <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">GitHub registry</a>.</p>
-<hr />
-<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
-<p>Definition from <a href="https://www.docker.com/resources/what-container/">docker.com</a></p>
-</div>
-<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
-<p>Definition from <a href="https://www.techtarget.com/searchitoperations/definition/Docker-image">techtarget.com</a></p>
-</div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="singularity-1"><a class="header" href="#singularity-1">Singularity</a></h1>
-<p>Singularity is a <strong>container platform</strong>. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall. </p>
+<hr>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-1">
+<p>Definition from <a href="https://www.docker.com/resources/what-container/">docker.com</a> <a href="#fr-1-1">↩</a></p>
+</li>
+<li id="footnote-2">
+<p>Definition from <a href="https://www.techtarget.com/searchitoperations/definition/Docker-image">techtarget.com</a> <a href="#fr-2-1">↩</a></p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="singularity-1"><a class="header" href="#singularity-1">Singularity</a></h1>
+<p>Singularity is a <strong>container platform</strong>. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall.</p>
 <h2 id="singularity-image-format-file"><a class="header" href="#singularity-image-format-file">Singularity Image Format file</a></h2>
 <p><strong>Singularity</strong> uses <strong>Singularity Image Format</strong> (<code>.sif</code>) files to run containers. <code>sif</code> files can be built through two processes:</p>
 <ul>
@@ -455,36 +506,37 @@ python_latest.sif
 <p>Below we describe and provide an example for each step.</p>
 <h3 id="1-specify-a-dockerfile"><a class="header" href="#1-specify-a-dockerfile">1. Specify a <code>Dockerfile</code></a></h3>
 <p>We first write a <code>Dockerfile</code> containing all we need to run our software. In this case, we want to train a cat and dog picture classifier and we need to write the <code>Dockerfile</code> accordingly.</p>
-<pre><code>FROM python:3.8
+<pre><code>FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN pip3 install poetry 
+ENV UV_LINK_MODE=copy
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock ./
 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-root
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 
-COPY . ./
+ADD . /app
 
-ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+
+ENV PYTHONPATH="/app"
 </code></pre>
-<p>In this <code>Dockerfile</code> we first use the official image for python.3.8. </p>
-<p>Then we install <a href="https://python-poetry.org/">poetry</a> (which is the python package manager) using <code>pip</code>. We recommand <strong>poetry</strong> over <strong>anaconda</strong> as we ran into some problems running <strong>anaconda</strong> with Docker. </p>
+<p>In this <code>Dockerfile</code> we base our image on the official <code>uv</code> image which ships with python 3.12. We use <a href="https://docs.astral.sh/uv/">uv</a> (which is the python package and project manager) instead of a more classical <code>pip</code>/<code>conda</code> setup because it is fast, reproducible, and locks the exact versions of every dependency in a <code>uv.lock</code> file.</p>
 <p>We set the working directory of the container as <code>/app</code></p>
-<p>We copy both <code>pyproject.toml</code> and <code>poetry.lock</code> in the container so that <code>poetry</code> knows which packages to install</p>
-<p>We install the packages necessary to run our machine learning experiment</p>
-<p>And finally we specify the <code>PYTHONPATH</code> so that scripts that are in certain folders can read the scripts which are stored in other folders.</p>
+<p>The first <code>RUN</code> installs the packages declared in <code>pyproject.toml</code> and pinned in <code>uv.lock</code>, <strong>without</strong> installing the project itself. The <code>--mount=type=bind</code> and <code>--mount=type=cache</code> options give the build access to the dependency files and cache the downloaded wheels between builds, which keeps rebuilds fast.</p>
+<p>Then we copy all the files of the folder into the container and run <code>uv sync --frozen</code> a second time so the project and its scripts are installed as well.</p>
+<p>Finally we specify the <code>PYTHONPATH</code> so that scripts that are in certain folders can read the scripts which are stored in other folders.</p>
 <h3 id="2-build-the-docker-image"><a class="header" href="#2-build-the-docker-image">2. Build the docker image</a></h3>
 <p>Building the docker image implies that <code>docker</code> is installed on your system. At NINA it is possible to install <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> to use Docker on the remote server. Please contact Datahjelp which can assist you setting up either <strong>Docker Desktop</strong> or the <strong>VDI</strong> .</p>
 <p>Once you have access to <code>docker</code> you can build your custom image using the command:</p>
 <p><code>docker build -t ml_image -f Dockerfile .</code></p>
-<p><code>-t</code> stands for &quot;tag&quot;, which is the name you want to give to the image.</p>
-<p><code>-f</code> stands for &quot;file&quot; and takes the <code>Dockerfile</code> as input.</p>
+<p><code>-t</code> stands for “tag”, which is the name you want to give to the image.</p>
+<p><code>-f</code> stands for “file” and takes the <code>Dockerfile</code> as input.</p>
 <h3 id="3-push-the-docker-image-in-a-registry"><a class="header" href="#3-push-the-docker-image-in-a-registry">3. Push the docker image in a registry</a></h3>
-<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry. </p>
+<p>It is possible to push your custom image directly in the <strong>GitLab</strong> or <strong>GitHub</strong> registry.</p>
 <h4 id="pushing-the-image-on-gitlab-registry"><a class="header" href="#pushing-the-image-on-gitlab-registry">Pushing the image on GitLab registry</a></h4>
 <p>Pushing the image on the <strong>Gitlab</strong> registry requires less manual configuration and we give an example on how to do it below.</p>
 <p>Provided that you have a GitLab account and a GitLab project (in our example the project is called <code>ml_image</code>) for your specific task, the image should be rename as:</p>
@@ -492,7 +544,7 @@ ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
 </code></pre>
 <p>We rename the image to provide an url to the registry where the image should be stored. Once the image has been pushed, you can check <code>GitLab project -&gt; Container registry</code></p>
 <h4 id="pushing-the-image-on-github-registry"><a class="header" href="#pushing-the-image-on-github-registry">Pushing the image on GitHub registry</a></h4>
-<p>In your project repository create a folder <code>.github/workflows</code> and create a file <code>publish_image.yml</code> containing the following code:</p>
+<p>In your project repository create a folder <code>.github/workflows</code> and create a file <code>docker.yml</code> containing the following code:</p>
 <pre><code>name: Create and publish a Docker image
 
 on:
@@ -512,7 +564,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
@@ -535,7 +587,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 </code></pre>
-<p>Once the folder and file have been created simply <strong>push</strong> the <code>.github</code> to the project's GitHub repository and <strong>GitHub Actions</strong> will take care of building and hosting the image.</p>
+<p>Once the folder and file have been created simply <strong>push</strong> the <code>.github</code> to the project’s GitHub repository and <strong>GitHub Actions</strong> will take care of building and hosting the image.</p>
 <p>Note that you will find the image in <code>Packages</code> (right sidebar of GitHub) and that you will need to make your image <strong>public</strong> before being able to pull it on <strong>Sigma2</strong>.</p>
 <h3 id="4-pull-the-image-as-a-sif-file-from-a-hpc-cluster"><a class="header" href="#4-pull-the-image-as-a-sif-file-from-a-hpc-cluster">4. Pull the image as a <code>.sif</code> file from a HPC cluster</a></h3>
 <p>To pull the image that is stored on Gitlab, Docker hub or GitHub registry simply run:</p>
@@ -544,7 +596,8 @@ jobs:
 <p>For instance, to pull the image from this repository (which is hosted on GitHub):</p>
 <pre><code> singularity pull docker://ghcr.io/ninanor/91126800_ml_and_associated_tech:main
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="interact-with-images"><a class="header" href="#interact-with-images">Interact with images</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="interact-with-images"><a class="header" href="#interact-with-images">Interact with images</a></h1>
 <p>Now that the <code>.sif</code> file has been <strong>pulled</strong>, it is possible to interact with it via multiple ways.</p>
 <h2 id="shell"><a class="header" href="#shell">Shell</a></h2>
 <p>The <code>shell</code> command allows you to spawn a new bash <strong>within your container</strong> and interact with it as though it were a small virtual machine.</p>
@@ -560,24 +613,25 @@ bencretois
 <p>The <code>exec</code> command allows you to execute a custom command within a container by specifying the image file. For instance, if I want to train a Machine Learning model using the <code>.sif</code> image we could write:</p>
 <pre><code>singularity exec \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 </code></pre>
 <h2 id="specifying-bind-paths"><a class="header" href="#specifying-bind-paths">Specifying bind paths</a></h2>
-<p>If the data we want to process / use to train a machine learning model are stored in a different folder (for instance our <code>.sif</code> file is in <code>cluster/projects/nn8055k</code> but the data is in <code>cluster/projects/nn8054k</code>) we need to expose <code>cluster/projects/nn8054k</code> or in other words, make it available to the container. The flag <code>--bind</code> fill that purpose. </p>
+<p>If the data we want to process / use to train a machine learning model are stored in a different folder (for instance our <code>.sif</code> file is in <code>cluster/projects/nn8055k</code> but the data is in <code>cluster/projects/nn8054k</code>) we need to expose <code>cluster/projects/nn8054k</code> or in other words, make it available to the container. The flag <code>--bind</code> fill that purpose.</p>
 <p>We would run the container as follow:</p>
 <pre><code>singularity exec \
                 --bind /cluster/projects/nn8054k \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 </code></pre>
 <h2 id="exposing-gpus"><a class="header" href="#exposing-gpus">Exposing GPUs</a></h2>
-<p>When training or using a machine learning model it will usually be preferable to use a GPU(s) for accelerating the processed. The container being an &quot;isolated&quot; environment, it is required to specify that we want to expose GPUs to our container. This can simply be done by adding the flag <code>--nv</code>. For example:</p>
+<p>When training or using a machine learning model it will usually be preferable to use a GPU(s) for accelerating the processed. The container being an “isolated” environment, it is required to specify that we want to expose GPUs to our container. This can simply be done by adding the flag <code>--nv</code>. For example:</p>
 <pre><code>singularity exec \
                 --nv \
                 91126800_ml_and_associated_tech_main.sif \
-                python main_scripts/train_model.py
+                uv run python /app/training_scripts/train_model.py
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="file-management-on-hpc-clusters"><a class="header" href="#file-management-on-hpc-clusters">File management on HPC clusters</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-management-on-hpc-clusters"><a class="header" href="#file-management-on-hpc-clusters">File management on HPC clusters</a></h1>
 <p>In addition to training a machine learning model we usually want to process our data on an HPC cluster to benefit the computational resources. For example, if we want to train a complex machine learning model we want the HPC cluster to first process our data so we get <strong>tensors</strong> so they can be used as inputs for the model. <strong>Using the data requires being able to access them</strong>.</p>
 <p>There are two ways of making the data available to the HPC cluster:</p>
 <ol>
@@ -585,10 +639,11 @@ bencretois
 <li>Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</li>
 </ol>
 <h2 id="copying-the-data-over-to-the-hpc-cluster"><a class="header" href="#copying-the-data-over-to-the-hpc-cluster">Copying the data over to the HPC cluster</a></h2>
-<p>Both methods have their advantages and drawbacks. While copying data over to the HPC cluster is conceptually simpler as it doesn't require the use of any specific library, the method will be limited by the size of the dataset. By default, if you apply for an account on one of Sigma2's HPC clusters you will be allocated <strong>1 TB</strong> of storage that can be extended up to <strong>10TB</strong>. Moreover, copying multiple TB of data can be a <strong>long process</strong>.</p>
+<p>Both methods have their advantages and drawbacks. While copying data over to the HPC cluster is conceptually simpler as it doesn’t require the use of any specific library, the method will be limited by the size of the dataset. By default, if you apply for an account on one of Sigma2’s HPC clusters you will be allocated <strong>1 TB</strong> of storage that can be extended up to <strong>10TB</strong>. Moreover, copying multiple TB of data can be a <strong>long process</strong>.</p>
 <h2 id="using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster"><a class="header" href="#using-a-filesystem-to-make-remote-data-available-to-the-hpc-cluster">Using a <strong>filesystem</strong> to make remote data available to the HPC cluster</a></h2>
-<p>On the other hand, using <strong>filesystems</strong> allows you to use data stored in a remote server (e.g. cloud storage, private servers ...) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. <strong>Filesystems</strong> nevertheless require slight change in your code.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="copying-files-over-to-an-hpc-cluster"><a class="header" href="#copying-files-over-to-an-hpc-cluster">Copying files over to an HPC cluster</a></h1>
+<p>On the other hand, using <strong>filesystems</strong> allows you to use data stored in a remote server (e.g. cloud storage, private servers …) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. <strong>Filesystems</strong> nevertheless require slight change in your code.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="copying-files-over-to-an-hpc-cluster"><a class="header" href="#copying-files-over-to-an-hpc-cluster">Copying files over to an HPC cluster</a></h1>
 <p>It is possible to copy / transfer files using simple <strong>bash</strong> commands. <code>scp</code> is used to simply <strong>copy</strong> data over while <code>rsync</code> is used to <strong>synchronise</strong> folders.</p>
 <h2 id="scp-copying-files"><a class="header" href="#scp-copying-files"><code>scp</code>: Copying files</a></h2>
 <p>The first command  is <code>scp</code> which allows you to copy files from your machine to the HPC machines. For instance you want to copy the script <code>train_model.py</code> from the <strong>template</strong> folder over to <code>saga</code> in the project folder <strong>nn8055k</strong>, we would write (using your relevant username and HPC):</p>
@@ -598,27 +653,28 @@ bencretois
 <pre><code>$ scp -r template bencretois@saga.sigma2.no:/cluter/projects/nn8055k
 </code></pre>
 <h2 id="rsync-synchronizing-a-local-repository-with-a-remote-repository"><a class="header" href="#rsync-synchronizing-a-local-repository-with-a-remote-repository"><code>rsync</code>: Synchronizing a local repository with a remote repository</a></h2>
-<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code>. Synchronizing has the advantage of being more flexible than <code>scp</code> and has some optimisations to make the transfer of files faster. Moreoever <code>rsync</code> has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc. </p>
+<p>Instead of copying all files from your local to remote folder you can synchronze the two folders with <code>rsync</code>. Synchronizing has the advantage of being more flexible than <code>scp</code> and has some optimisations to make the transfer of files faster. Moreoever <code>rsync</code> has a plethora of command line options, allowing the user to fine tune its behavior. It supports complex filter rules, runs in batch mode, daemon mode, etc.</p>
 <pre><code>$ rsync -e ssh -avz ./local_repo user@server:/remote_repo
 </code></pre>
-<p><code>-a</code> is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings. </p>
+<p><code>-a</code> is the archive option, i.e. syncs directories recursively while keeping permissions, symbolic links, ownership, and group settings.</p>
 <p><code>-v</code> being the verbose option and prints the progress and status of the rsync command.</p>
 <p><code>-z</code> compressing files during the transfer - speed up the sync.</p>
 <p><code>-e</code> is used to specify the remote shell to use, <code>ssh</code> in our case.</p>
 <p>It is also possible to use the option <code>--exclude</code> to exclude some file from synchronisation:</p>
-<pre><code>$ rsync -e ssh -avz --exclude &quot;file.txt&quot; ./local_repo user@server:/remote_repo
+<pre><code>$ rsync -e ssh -avz --exclude "file.txt" ./local_repo user@server:/remote_repo
 </code></pre>
 <p>However, in some cases there are files that we do not want to send to the remote repository. In these cases with can generate and <code>.txt</code> file containing a list of files to exclude.</p>
-<pre><code>$ rsync -e ssh -avz --exclude-from{&quot;list_ignore.txt&quot;} ./local_repo user@server:/remote_repo
+<pre><code>$ rsync -e ssh -avz --exclude-from{"list_ignore.txt"} ./local_repo user@server:/remote_repo
 </code></pre>
 <p>With <code>list_ignore.txt</code> looking like:</p>
 <pre><code>folder1
 file1.txt
 folder2
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="filesystem"><a class="header" href="#filesystem">Filesystem</a></h1>
-<p>A <strong>filesystem</strong> (or filesystem) is the way in which files are named and where they are placed logically for <strong>storage</strong> and <strong>retrieval</strong>. Without a file system, stored information wouldn't be isolated into individual files and would be difficult to identify and retrieve. As data capacities increase, the organization and accessibility of individual files are becoming even more important in data storage. <sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
-<pre><code class="language-mermaid">
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="filesystem"><a class="header" href="#filesystem">Filesystem</a></h1>
+<p>A <strong>filesystem</strong> (or filesystem) is the way in which files are named and where they are placed logically for <strong>storage</strong> and <strong>retrieval</strong>. Without a file system, stored information wouldn’t be isolated into individual files and would be difficult to identify and retrieve. As data capacities increase, the organization and accessibility of individual files are becoming even more important in data storage. [^1].</p>
+<pre class="mermaid">
 graph TB;
 
 A[Project folder] --&gt; B[Camera trap pictures]
@@ -627,13 +683,14 @@ A --&gt; D[Report.doc]
 B --&gt; E[Pictures of deer]
 B --&gt; F[Pictures of birds]
 C --&gt; G[myscript.py]
-</code></pre>
+</pre>
+
 <h2 id="pyfilesystem-a-filesystem-abstraction-for-python"><a class="header" href="#pyfilesystem-a-filesystem-abstraction-for-python">Pyfilesystem: a filesystem abstraction for Python</a></h2>
 <p>A filesystem abstraction allows you to work with files and directories in archives, memory, the cloud etc. as easily as your local drive. <strong>It makes your code agnostic to where the data is stored</strong>.</p>
-<p><strong><a href="https://www.pyfilesystem.org/">Pyfilesystem</a></strong> is a filesystem abstraction <strong>for Python</strong>. This means that in your python code you can fully replace the use of <code>os</code> with <strong>Pyfilesystem</strong>. </p>
+<p><strong><a href="https://www.pyfilesystem.org/">Pyfilesystem</a></strong> is a filesystem abstraction <strong>for Python</strong>. This means that in your python code you can fully replace the use of <code>os</code> with <strong>Pyfilesystem</strong>.</p>
 <p>Suppose the data is stored on <code>NIRD</code> in the project folder <code>/folder/my_data</code> but I want to process the data on <code>SAGA</code> to benefit from optimal computational resources. To access the data on <code>NIRD</code> I would make the following change to my code:</p>
 <p>First, a connection to <code>NIRD</code> must be established. The connection to <code>NIRD</code> is done using the <code>ssh</code> protocol.</p>
-<pre><code class="language-python">connection_string = &quot;ssh://bencretois:PASSWORD@nird.sigma2.no&quot;
+<pre><code class="language-python">connection_string = "ssh://bencretois:PASSWORD@nird.sigma2.no"
 
 
 def doConnection(connection_string):
@@ -653,16 +710,17 @@ my_filesystem = doConnection(connection_string)
             yield fs.path.combine(path, f.name)
 
 
-all_files = walk_audio(my_filesystem, &quot;/folder/my_data&quot;)
+all_files = walk_audio(my_filesystem, "/folder/my_data")
 </code></pre>
 <p>Now that the object <code>all_files</code> has been created, it is possible to use the files locally.</p>
-<hr />
-<p><sup class="footnote-reference"><a href="#1">1</a></sup> Definition on <a href="https://www.techtarget.com/searchstorage/definition/file-system">Techtarget</a></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="case-study-training-a-cat--dog-classifier"><a class="header" href="#case-study-training-a-cat--dog-classifier">Case study: training a cat / dog classifier</a></h1>
+<hr>
+<p>[^1] Definition on <a href="https://www.techtarget.com/searchstorage/definition/file-system">Techtarget</a></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="case-study-training-a-cat--dog-classifier"><a class="header" href="#case-study-training-a-cat--dog-classifier">Case study: training a cat / dog classifier</a></h1>
 <p>In this section we will demonstrate how to train a cat and dog classifier using supercomputers and in particular SIGMA2.</p>
 <h2 id="data"><a class="header" href="#data">Data</a></h2>
-<p>The case study is entirely reproducible and you can run it yourself provided you have an account on SIGMA2. </p>
-<p>The data to run this case study can be found on <a href="https://www.kaggle.com/competitions/dogs-vs-cats/data?select=train.zip">Kaggle</a>, a subsidiary of Google that allow users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges. The training dataset is composed of 25,000 images of dogs and cats and weight approximatively about 500MB.a </p>
+<p>The case study is entirely reproducible and you can run it yourself provided you have an account on SIGMA2.</p>
+<p>The data to run this case study can be found on <a href="https://www.kaggle.com/competitions/dogs-vs-cats/data?select=train.zip">Kaggle</a>, a subsidiary of Google that allow users to find and publish data sets, explore and build models in a web-based data-science environment, work with other data scientists and machine learning engineers, and enter competitions to solve data science challenges. The training dataset is composed of 25,000 images of dogs and cats and weight approximatively about 500MB.a</p>
 <h2 id="code"><a class="header" href="#code">Code</a></h2>
 <p>All the scripts are found in the GitHub repository of this book, under <code>case_study</code>. The folder contains three subfolders:</p>
 <ul>
@@ -671,88 +729,72 @@ all_files = walk_audio(my_filesystem, &quot;/folder/my_data&quot;)
 <li><strong>model_scripts</strong>: All the python scripts necessary to train the model.</li>
 </ul>
 <p>The folder also contains a <code>Dockerfile</code> which will be used for creating <code>docker container</code>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="setting-up-the-environment"><a class="header" href="#setting-up-the-environment">Setting up the environment</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="setting-up-the-environment"><a class="header" href="#setting-up-the-environment">Setting up the environment</a></h1>
 <h2 id="virtual-environments-versus-containers"><a class="header" href="#virtual-environments-versus-containers">Virtual environments versus containers</a></h2>
 <p>Two choices are offered to set up the environment: <strong>virtual environments</strong> and <strong>containers</strong>. We will demonstrate how we can train the cat / dog classifier using both methods.</p>
 <h2 id="conda-setup"><a class="header" href="#conda-setup">Conda setup</a></h2>
 <p>WORK IN PROGRESS</p>
 <h2 id="container-setup"><a class="header" href="#container-setup">Container setup</a></h2>
-<p>On the other hand it might be a good idea to set up a container. Because we have not <strong>root</strong> access on SIGMA2's HPC we have to build a Singularity container by first having a Docker container which is specified using a <strong>Dockerfile</strong>. Let's analyse the Dockerfile of this specific case study line by line:</p>
+<p>On the other hand it might be a good idea to set up a container. Because we have not <strong>root</strong> access on SIGMA2’s HPC we have to build a Singularity container by first having a Docker container which is specified using a <strong>Dockerfile</strong>. Let’s analyse the Dockerfile of this specific case study line by line:</p>
 <ul>
-<li>First we install python version 3.8 in our container so we can use up to date python libraries </li>
+<li>We base our container on the official <code>uv</code> image which ships with python 3.12 so we can use up to date python libraries</li>
 </ul>
-<pre><code class="language-bash">FROM python:3.8
+<pre><code class="language-bash">FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 </code></pre>
 <ul>
-<li>Avoid the system asking questions / dialogs during the <code>apt-get</code> install</li>
+<li>Copy the dependency files rather than resolving them again, which makes the install reproducible</li>
 </ul>
-<pre><code class="language-bash">ARG DEBIAN_FRONTEND=noninteractive
+<pre><code class="language-bash">ENV UV_LINK_MODE=copy
+
+WORKDIR /app
 </code></pre>
 <ul>
-<li>Update <code>apt-get</code> to have up to date packages</li>
+<li>The next lines are specific to <code>uv</code>. We copy both the <code>pyproject.toml</code> (file containing the packages we use for our analysis) and <code>uv.lock</code> (file containing all the resolved dependencies) into the container. Then we install the packages while caching the downloaded wheels so that rebuilds are fast. The <code>--no-install-project</code> flag means we only install the dependencies at this stage, not the project itself.</li>
 </ul>
-<pre><code class="language-bash">RUN \
-    apt-get update &amp;&amp; \
-    rm -rf /var/lib/apt/lists/*
-</code></pre>
-<ul>
-<li>Install the package manager <code>poetry</code>. Note that you can install your preferred package manager such as <code>conda</code> in this step.</li>
-</ul>
-<pre><code class="language-bash">RUN pip3 install poetry 
-</code></pre>
-<ul>
-<li>Set the working directory of the container</li>
-</ul>
-<pre><code class="language-bash">WORKDIR /app
-</code></pre>
-<ul>
-<li>The next three lines are specific to <code>poetry</code>. Basically we copy both the <code>pyproject.toml</code> (file containing the packages we use for our analysis) and <code>poetry.lock</code> (file containing all the dependancies). Then we remove the creation of the virutal environment so that <code>python</code> in our container uses all our package without opening a virtual environment. Finally we install our packages.</li>
-</ul>
-<pre><code class="language-bash">COPY pyproject.toml poetry.lock ./
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-root
+<pre><code class="language-bash">RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 </code></pre>
 <ul>
 <li>Copy all the files of the folder where we open the container</li>
 </ul>
-<pre><code class="language-bash">COPY . ./
+<pre><code class="language-bash">ADD . /app
 </code></pre>
 <ul>
-<li>Set the python path to the working directory. This way the <code>main_scripts</code> can access the scripts in the other folders (for instance the <code>utils</code> scripts).</li>
+<li>Now that the source files are in place, install the project itself so the <code>uv</code> environment contains everything we need</li>
 </ul>
-<pre><code class="language-bash">ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
+<pre><code class="language-bash">RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+</code></pre>
+<ul>
+<li>Set the python path to the working directory. This way the scripts can access the scripts in the other folders (for instance the <code>model_scripts</code> scripts).</li>
+</ul>
+<pre><code class="language-bash">ENV PYTHONPATH="/app"
 </code></pre>
 <h2 id="2---creating-the-docker-image"><a class="header" href="#2---creating-the-docker-image">2 - Creating the docker image</a></h2>
-<p>The <code>Dockerfile</code> being defined we can now create our image (i.e. the &quot;environment&quot; in which we will run the training script). For open a terminal, move to the folder where your <code>Dockerfile</code> is located and write the following command (change <code>case_study_1</code> to the name of your folder):</p>
-<p><code>docker run -t case_study_1:latest -f Dockerfile .</code></p>
+<p>The <code>Dockerfile</code> being defined we can now create our image (i.e. the “environment” in which we will run the training script). Open a terminal, move to the folder where your <code>Dockerfile</code> is located and write the following command (change <code>case_study_1</code> to the name of your folder):</p>
+<p><code>docker build -t case_study_1:latest .</code></p>
 <p>The command should output the following:</p>
 <pre><code class="language-bash">Sending build context to Docker daemon  244.7kB
-Step 1/10 : FROM python:3.8
+Step 1/7 : FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
  ---&gt; 271c1bcd4489
-Step 2/10 : ARG DEBIAN_FRONTEND=noninteractive
+Step 2/7 : ENV UV_LINK_MODE=copy
  ---&gt; Using cache
  ---&gt; 0965e91032c6
-Step 3/10 : RUN     apt-get update &amp;&amp;     rm -rf /var/lib/apt/lists/*
- ---&gt; Using cache
- ---&gt; 02fa21122354
-Step 4/10 : RUN pip3 install poetry
- ---&gt; Using cache
- ---&gt; 33bbd2c53863
-Step 5/10 : WORKDIR /app
+Step 3/7 : WORKDIR /app
  ---&gt; Using cache
  ---&gt; 7720e687da9c
-Step 6/10 : COPY pyproject.toml poetry.lock ./
- ---&gt; Using cache
- ---&gt; 345244b7ba43
-Step 7/10 : RUN poetry config virtualenvs.create false
+Step 4/7 : RUN --mount=type=cache,target=/root/.cache/uv --mount=type=bind,source=uv.lock,target=uv.lock --mount=type=bind,source=pyproject.toml,target=pyproject.toml uv sync --frozen --no-install-project
  ---&gt; Using cache
  ---&gt; 47271847855f
-Step 8/10 : RUN poetry install --no-root
+Step 5/7 : ADD . /app
+ ---&gt; c7656f1447fa
+Step 6/7 : RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen
  ---&gt; Using cache
  ---&gt; 67e487ef8ae6
-Step 9/10 : COPY . ./
- ---&gt; c7656f1447fa
-Step 10/10 : ENV PYTHONPATH &quot;${PYTHONPATH}:/app/&quot;
+Step 7/7 : ENV PYTHONPATH="/app"
  ---&gt; Running in 9f82e9b70fc5
 Removing intermediate container 9f82e9b70fc5
  ---&gt; b08815df7070
@@ -760,10 +802,11 @@ Successfully built b08815df7070
 Successfully tagged case_study_1:latest
 </code></pre>
 <p>Indicating that the image has been successfully created.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="training-model-locally"><a class="header" href="#training-model-locally">Training model locally</a></h1>
-<p>First of all, we should try to make sure that our scripts work well on the VDI before spending computational resources on SIGMA2. To develop and improve our scripts we can leverage the power of <code>Docker</code> by using the created image in two ways. </p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="training-model-locally"><a class="header" href="#training-model-locally">Training model locally</a></h1>
+<p>First of all, we should try to make sure that our scripts work well on the VDI before spending computational resources on SIGMA2. To develop and improve our scripts we can leverage the power of <code>Docker</code> by using the created image in two ways.</p>
 <p>First, we can start a <code>Jupyter</code> instance inside the docker container so you can develop in a more interactive environments while having all the python libraries you need. For this you can use the script <code>docker_start_jupyter</code> in <code>ml-sats/bash_utils</code>.</p>
-<p>The script </p>
+<p>The script</p>
 <pre><code>#!/bin/bash
 
 cd ~/Code/deepexperiments
@@ -771,12 +814,11 @@ cd ~/Code/deepexperiments
 docker run \
     -p 8889:8889 \
     --rm -it \
-    -v $PWD:/app \
     -v $HOME/Data:/Data \
     case_study_1:latest \
-    poetry run jupyter lab \
+    uv run --with jupyterlab jupyter lab \
     --port=8889 --no-browser --ip=0.0.0.0 --allow-root
-~                                                        
+~
 </code></pre>
 <p>You can also use the docker image to run the training script on any computers using the script <code>case_study_1/bash_scripts/train_model.sh</code>. Note that you need to change the folders that are exposed (for the meaning of exposed folder refer to the document XXX)</p>
 <pre><code>#!/bin/bash
@@ -791,8 +833,8 @@ cd $HOME/Code/case_study_1
 DATA_PATH=/Data/train
 OUT_DIR=/Data/
 
-docker run --rm -v $HOME/Data:/Data -v $PWD:/app case_study_1:latest \
-    python -u /app/main_scripts/train_model.py \
+docker run --rm -v $HOME/Data:/Data case_study_1:latest \
+    uv run python -u /app/training_scripts/train_model.py \
                 --data_path $DATA_PATH \
                 --save_path $OUT_DIR/model.pt \
                 --save_es $OUT_DIR/model.pt \
@@ -801,7 +843,7 @@ docker run --rm -v $HOME/Data:/Data -v $PWD:/app case_study_1:latest \
                 --num_epoch 10
 </code></pre>
 <p>We are finally ready to train the model. Since this is a test and the main model will be trained on SIGMA2 we run the model only for a few epoch to be sure the code does not contain any bug. Running the script (<code>./bash_scripts/train_model.sh</code>) should output the following:</p>
-<pre><code>benjamin.cretois@nixml086424q01:~/Code/ml-sats/case_study_1$ ./bash_scripts/train_model.sh 
+<pre><code>benjamin.cretois@nixml086424q01:~/Code/ml-sats/case_study_1$ ./bash_scripts/train_model.sh
 ./bash_scripts/train_model.sh: line 3: cd: /home/benjamin.cretois/Code/case_study_1: No such file or directory
 /usr/local/lib/python3.8/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
   return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
@@ -827,9 +869,10 @@ Epoch: 9, Training loss: 0.3919389988206754, Validation loss: 0.3920069590210914
 Validation loss decreased (0.412025 --&gt; 0.392007).  Saving model ...
 Finished Training
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="training-model-on-sigma2"><a class="header" href="#training-model-on-sigma2">Training model on SIGMA2</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="training-model-on-sigma2"><a class="header" href="#training-model-on-sigma2">Training model on SIGMA2</a></h1>
 <h2 id="4---pushing-the-image-to-the-gitlab-repository"><a class="header" href="#4---pushing-the-image-to-the-gitlab-repository">4 - Pushing the image to the Gitlab repository</a></h2>
-<p>On SIGMA2 we cannot use our docker image immediately as it has been created on our local computer. As explained <a href="content/chapter_4/">here</a> SIGMA2 uses <code>singularity</code> which is another software for handling images.</p>
+<p>On SIGMA2 we cannot use our docker image immediately as it has been created on our local computer. As explained <a href="#training-model-on-sigma2">here</a> SIGMA2 uses <code>singularity</code> which is another software for handling images.</p>
 <p>First we need to push our docker image to <code>GitLab</code> (we use <code>Gitlab</code> instead of <code>GitHub</code> as it is easier to handle docker images on <code>Gitlab</code>). This has to be done in 3 steps:</p>
 <ul>
 <li>First, be sure you are logged in the Gitlab registry:</li>
@@ -880,7 +923,7 @@ do
 </ul>
 <pre><code>singularity exec --bind /cluster/projects/nn5019k:/Data \
     --nv case_study_1.sif \
-    python -u main_scripts/train_model.py \
+    uv run python -u /app/training_scripts/train_model.py \
                 --data_path /Data/kaggle_cats_dogs/train \
                 --save_path /Data/saved_models/model.pt \
                 --save_es /Data/saved_models/model_es.pt \
@@ -898,51 +941,82 @@ done
 <p>If we want to use our trained model on our own computer we can import the model using the command <code>scp</code>:</p>
 <pre><code>scp bencretois@sage.sigma2.no:/cluster/projects/nn5019k/saved_models/model.pt $HOME/Code/ml-sats/case_study_1
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="chapter-5-advanced-topics"><a class="header" href="#chapter-5-advanced-topics">Chapter 5: Advanced topics</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="ray-tune"><a class="header" href="#ray-tune">Ray tune</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="acknowlegments"><a class="header" href="#acknowlegments">Acknowlegments</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="chapter-5-advanced-topics"><a class="header" href="#chapter-5-advanced-topics">Chapter 5: Advanced topics</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="parallelising-the-workflow"><a href="#parallelising-the-workflow" class="header">Parallelising the workflow</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ray-tune"><a class="header" href="#ray-tune">Ray tune</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="acknowlegments"><a class="header" href="#acknowlegments">Acknowlegments</a></h1>
 <p>This document would not have been possible without the inputs of Francesco Frassinelli, Kjetil Grun and Stig Clausen.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="list-of-acronyms"><a class="header" href="#list-of-acronyms">List of acronyms</a></h1>
-<div class="table-wrapper"><table><thead><tr><th>Acronym</th><th>Term</th><th>Description</th></tr></thead><tbody>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="list-of-acronyms"><a class="header" href="#list-of-acronyms">List of acronyms</a></h1>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Acronym</th><th>Term</th><th>Description</th></tr>
+</thead>
+<tbody>
 <tr><td>GPU</td><td>Graphic Processing Unit</td><td>A specialized processor originally designed to accelerate graphics rendering. Used extensively in Machine Learning to train complex algorithms</td></tr>
 <tr><td>GUI</td><td>Graphical User Interface</td><td>Form of user interface that allows users to interact with electronic devices through graphical icons and audio indicator such as primary notation</td></tr>
 <tr><td>ML</td><td>Machine learning</td><td>Use and development of computer systems that are able to learn and adapt without following explicit instructions</td></tr>
 <tr><td>DL</td><td>Deep learning</td><td>Part of the family of machine learning methods based on artificial neural networks with representation learning.</td></tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
             </nav>
 
         </div>
 
-        <script type="text/javascript">
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-09f2665d.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-609e4cb8.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript" src="mermaid.min.js"></script>
-        <script type="text/javascript" src="mermaid-init.js"></script>
-        <script type="text/javascript">
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+        <script>
         window.addEventListener('load', function() {
             MathJax.Hub.Register.StartupHook('End', function() {
                 window.setTimeout(window.print, 100);
             });
         });
         </script>
+
+
+    </div>
     </body>
 </html>

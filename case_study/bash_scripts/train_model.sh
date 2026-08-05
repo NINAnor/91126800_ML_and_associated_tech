@@ -10,8 +10,8 @@ cd $HOME/Code/case_study_1
 DATA_PATH=/Data/train
 OUT_DIR=/Data/
 
-docker run --rm -v $HOME/Data:/Data -v $PWD:/app case_study_1:latest \
-    python -u /app/main_scripts/train_model.py \
+docker run --rm -v $HOME/Data:/Data case_study_1:latest \
+    uv run python -u /app/training_scripts/train_model.py \
                 --data_path $DATA_PATH \
                 --save_path $OUT_DIR/model.pt \
                 --save_es $OUT_DIR/model.pt \
