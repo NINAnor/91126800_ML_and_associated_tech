@@ -14,7 +14,3 @@ Both methods have their advantages and drawbacks. While copying data over to the
 ## Using a **filesystem** to make remote data available to the HPC cluster
 
 On the other hand, using **filesystems** allows you to use data stored in a remote server (e.g. cloud storage, private servers ...) in the HPC cluster and abstract the need of having storage memory in the HPC cluster. **Filesystems** nevertheless require slight change in your code.
-
-
-
-

@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+_commit: v0.3.0
+_src_path: gh:ninanor/template-python
+author_name: Francesco Frassinelli
+debug: false
+default_branch_name: main
+docker: true
+email: francesco.frassinelli@nina.no
+notebook: false
+project_name: HPC and containers for Machine Learning
+project_slug: ml_and_associated_tech
+repo_name: 91126800_ML_and_associated_tech
+repo_org: ninanor
+template_type: python
+type_annotations: false

@@ -1,25 +1,33 @@
-[tool.poetry]
-name = "app"
-version = "0.1.0"
+[dependency-groups]
+dev = [
+  "deptry"
+]
+
+[project]
+authors = [
+  {name = "Francesco Frassinelli", email = "francesco.frassinelli@nina.no"}
+]
+dependencies = [
+  "django-environ"
+]
 description = ""
-authors = ["Ben"]
+license = "GPL-3.0+"
+name = "ml_and_associated_tech"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.1.0"
 
-[tool.poetry.dependencies]
-python = "^3.8"
-torch = {url = "https://download.pytorch.org/whl/cu111/torch-1.9.0%2Bcu111-cp38-cp38-linux_x86_64.whl"}
-sklearn = "^0.0"
-ipykernel = "^6.5.1"
-matplotlib = "^3.5.0"
-seaborn = "^0.11.2"
-jupyter = "^1.0.0"
-albumentations = "^1.1.0"
-Pillow = "^8.4.0"
-pyro-ppl = "^1.8.0"
-jupyterlab = "^3.2.8"
-mlflow = "^1.24.0"
+[project.scripts]
+ml_and_associated_tech = "main:start"
 
-[tool.poetry.dev-dependencies]
+[tool.deptry]
+extend_exclude = ["book", "src/case_study"]
+known_first_party = []
 
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.ruff]
+extend-exclude = ["book", "src/case_study"]
+fix = true
+
+[tool.ruff.lint]
+ignore = ["COM812"]
+select = ["E", "W", "I", "F", "UP", "S", "B", "A", "COM", "LOG", "PTH", "Q"]

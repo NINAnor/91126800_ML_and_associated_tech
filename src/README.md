@@ -7,7 +7,3 @@ This document is the result of a Strategic Funding given by the [Norwegian Insti
 # Authors
 
 The document has been written by [Benjamin Cretois](https://www.nina.no/english/Contact/Employees/Employee-info?AnsattID=15849) with the help of [Francesco Frassinelli](https://www.nina.no/Kontakt/Ansatte/Ansattinformasjon.aspx?AnsattID=15958).
-
-
-
-

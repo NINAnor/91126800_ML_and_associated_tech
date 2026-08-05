@@ -15,3 +15,5 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
 ENV PYTHONPATH="/app"
+
+ENTRYPOINT ["uv", "run", "main.py"]

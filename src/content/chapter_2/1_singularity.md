@@ -1,6 +1,6 @@
 # Singularity
 
-Singularity is a **container platform**. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall. 
+Singularity is a **container platform**. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Singularity on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall.
 
 ## Singularity Image Format file
 
@@ -44,34 +44,34 @@ Below we describe and provide an example for each step.
 We first write a `Dockerfile` containing all we need to run our software. In this case, we want to train a cat and dog picture classifier and we need to write the `Dockerfile` accordingly.
 
 ```
-FROM python:3.8
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-ARG DEBIAN_FRONTEND=noninteractive
-
-RUN pip3 install poetry 
+ENV UV_LINK_MODE=copy
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock ./
 
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-root
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 
-COPY . ./
+ADD . /app
 
-ENV PYTHONPATH "${PYTHONPATH}:/app/"
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+
+ENV PYTHONPATH="/app"
 ```
 
-In this `Dockerfile` we first use the official image for python.3.8. 
-
-Then we install [poetry](https://python-poetry.org/) (which is the python package manager) using `pip`. We recommand **poetry** over **anaconda** as we ran into some problems running **anaconda** with Docker. 
+In this `Dockerfile` we base our image on the official `uv` image which ships with python 3.12. We use [uv](https://docs.astral.sh/uv/) (which is the python package and project manager) instead of a more classical `pip`/`conda` setup because it is fast, reproducible, and locks the exact versions of every dependency in a `uv.lock` file.
 
 We set the working directory of the container as `/app`
 
-We copy both `pyproject.toml` and `poetry.lock` in the container so that `poetry` knows which packages to install
+The first `RUN` installs the packages declared in `pyproject.toml` and pinned in `uv.lock`, **without** installing the project itself. The `--mount=type=bind` and `--mount=type=cache` options give the build access to the dependency files and cache the downloaded wheels between builds, which keeps rebuilds fast.
 
-We install the packages necessary to run our machine learning experiment
+Then we copy all the files of the folder into the container and run `uv sync --frozen` a second time so the project and its scripts are installed as well.
 
-And finally we specify the `PYTHONPATH` so that scripts that are in certain folders can read the scripts which are stored in other folders.
+Finally we specify the `PYTHONPATH` so that scripts that are in certain folders can read the scripts which are stored in other folders.
 
 
 
@@ -90,7 +90,7 @@ Once you have access to `docker` you can build your custom image using the comma
 
 ### 3. Push the docker image in a registry
 
-It is possible to push your custom image directly in the **GitLab** or **GitHub** registry. 
+It is possible to push your custom image directly in the **GitLab** or **GitHub** registry.
 
 #### Pushing the image on GitLab registry
 
@@ -107,7 +107,7 @@ We rename the image to provide an url to the registry where the image should be 
 
 #### Pushing the image on GitHub registry
 
-In your project repository create a folder `.github/workflows` and create a file `publish_image.yml` containing the following code:
+In your project repository create a folder `.github/workflows` and create a file `docker.yml` containing the following code:
 
 ```
 name: Create and publish a Docker image
@@ -129,7 +129,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
